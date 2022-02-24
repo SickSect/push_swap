@@ -4,7 +4,7 @@ CC			=	gcc
 
 FLAGS		=	-Wall -Wextra -Werror
 
-SRC			=	main.c ft_atoi.c
+SRC			=	main.c ft_atoi.c is_digit.c lst_new.c
 
 OBJ			=	$(SRC:.c=.o)
 

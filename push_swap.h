@@ -12,5 +12,7 @@ typedef struct s_node
 }   t_node;
 
 int	ft_atoi(const char *str);
+int	ft_isdigit(int ch);
+t_node	*ft_lstnew(int content);
 
 #endif
