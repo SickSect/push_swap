@@ -4,8 +4,6 @@
 
 int main(int argc, char **argv)
 {
-    (void)argc;
-    //printf(" %d %c %c %c", argc, *argv[1], *argv[2], *argv[3]);
     int     i;
     t_node *a;
     t_node *b;
@@ -18,18 +16,26 @@ int main(int argc, char **argv)
     a = malloc(sizeof(t_node));
     if (!a)
         return (0);
-    a->data = ft_atoi(argv[i]);
+    a->data = ft_atoi(argv[i++]);
     mv = a;
-    i++;
     while (i < argc)
     {
-        mv->p_next = ft_lstnew(ft_atoi(argv[i]));
+        mv->p_next = ft_lstnew(ft_atoi(argv[i++]));
         mv = mv->p_next;
-        i++;
     }
 
 
 
+    // JUST PRINT
+    mv = a;
+    while (mv->p_next != NULL)
+    {
+        printf(" res = %d\n", mv->data);
+        mv = mv->p_next;
+    }
+    printf(" res = %d\n FIN\n", mv->data);
+    //
+    f_sa(a, a->p_next);
     // JUST PRINT
     mv = a;
     while (mv->p_next != NULL)
