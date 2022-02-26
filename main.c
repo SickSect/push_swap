@@ -1,6 +1,14 @@
 #include "push_swap.h"
 
-
+void alloc_mem(t_node *a, t_node *b)
+{
+    b = malloc(sizeof(t_node));
+    if (!b)
+        return (0);
+    a = malloc(sizeof(t_node));
+    if (!a)
+        return (0);
+}
 
 int main(int argc, char **argv)
 {
@@ -10,12 +18,7 @@ int main(int argc, char **argv)
     t_node *mv;
 
     i = 1;
-    b = malloc(sizeof(t_node));
-    if (!b)
-        return (0);
-    a = malloc(sizeof(t_node));
-    if (!a)
-        return (0);
+    alloc_mem(a, b);
     a->data = ft_atoi(argv[i++]);
     mv = a;
     while (i < argc)
@@ -25,9 +28,8 @@ int main(int argc, char **argv)
     }
 
 
-
+    mv = f_sa(a, a->p_next);
     // JUST PRINT
-    mv = a;
     while (mv->p_next != NULL)
     {
         printf(" res = %d\n", mv->data);
@@ -36,13 +38,4 @@ int main(int argc, char **argv)
     printf(" res = %d\n FIN\n", mv->data);
     //
     f_sa(a, a->p_next);
-    // JUST PRINT
-    mv = a;
-    while (mv->p_next != NULL)
-    {
-        printf(" res = %d\n", mv->data);
-        mv = mv->p_next;
-    }
-    printf(" res = %d\n", mv->data);
-    //
 }

@@ -7,7 +7,6 @@
 
 typedef struct s_node
 {
-    int length;
     int data;
     struct s_node *p_next;
 }   t_node;
@@ -15,7 +14,9 @@ typedef struct s_node
 int	ft_atoi(const char *str);
 int	ft_isdigit(int ch);
 t_node	*ft_lstnew(int content);
-void f_sa(t_node *head, t_node *next);
+struct s_node *f_sa(t_node *head, t_node *next);
+struct s_node *f_sb(t_node *head, t_node *next);
+void f_ss(t_node *head_a, t_node *head_b, t_node *mv_a, t_node *mv_b);
 
 
 #endif

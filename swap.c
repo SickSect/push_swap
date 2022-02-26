@@ -1,12 +1,21 @@
 #include "push_swap.h"
 
-void f_sa(t_node *head, t_node *next)
+struct s_node *f_sa(t_node *head, t_node *next)
 {
-    t_node *tmp;
-
-    tmp = next;
     head->p_next = next->p_next;
     next->p_next = head;
+    return (next);
+}
 
-   free(tmp);
+struct s_node *f_sb(t_node *head, t_node *next)
+{
+    head->p_next = next->p_next;
+    next->p_next = head;
+    return (next);
+}
+
+void f_ss(t_node *head_a, t_node *head_b, t_node *mv_a, t_node *mv_b)
+{
+    mv_a = f_sa(head_a, head_a->p_next);
+    mv_b = f_sb(head_b, head_b->p_next);
 }
