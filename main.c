@@ -38,7 +38,7 @@ int main(int argc, char **argv)
     }
     printf("\n");
     //
-    f_pb(a, b);
+    f_sa(a, a->p_next);
     mv = a;
     // JUST PRINT
     while (mv != NULL)
