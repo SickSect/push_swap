@@ -1,15 +1,5 @@
 #include "push_swap.h"
 
-void alloc_mem(t_node *a, t_node *b)
-{
-    b = malloc(sizeof(t_node));
-    if (!b)
-        return (0);
-    a = malloc(sizeof(t_node));
-    if (!a)
-        return (0);
-}
-
 int main(int argc, char **argv)
 {
     int     i;
@@ -18,7 +8,12 @@ int main(int argc, char **argv)
     t_node *mv;
 
     i = 1;
-    alloc_mem(a, b);
+       b = malloc(sizeof(t_node));
+    if (!b)
+        return (0);
+    a = malloc(sizeof(t_node));
+    if (!a)
+        return (0);
     a->data = ft_atoi(argv[i++]);
     mv = a;
     while (i < argc)
@@ -27,15 +22,37 @@ int main(int argc, char **argv)
         mv = mv->p_next;
     }
 
-
-    mv = f_sa(a, a->p_next);
+    mv = a;
     // JUST PRINT
-    while (mv->p_next != NULL)
+    while (mv != NULL)
     {
-        printf(" res = %d\n", mv->data);
+        printf(" |A%d| ", mv->data);
         mv = mv->p_next;
     }
-    printf(" res = %d\n FIN\n", mv->data);
+    printf("\n");
+    mv = b;
+    while (mv != NULL)
+    {
+        printf(" |B%d|", mv->data);
+        mv = mv->p_next;
+    }
+    printf("\n");
     //
-    f_sa(a, a->p_next);
+    f_pb(a, b);
+    mv = a;
+    // JUST PRINT
+    while (mv != NULL)
+    {
+        printf(" |A%d| ", mv->data);
+        mv = mv->p_next;
+    }
+    printf("\n");
+    mv = b;
+    while (mv != NULL)
+    {
+        printf(" |B%d| ", mv->data);
+        mv = mv->p_next;
+    }
+    printf("\n");
+    //
 }

@@ -14,8 +14,9 @@ struct s_node *f_sb(t_node *head, t_node *next)
     return (next);
 }
 
-void f_ss(t_node *head_a, t_node *head_b, t_node *mv_a, t_node *mv_b)
+void f_ss(t_node *head_a, t_node *head_b)
 {
-    mv_a = f_sa(head_a, head_a->p_next);
-    mv_b = f_sb(head_b, head_b->p_next);
+    head_a = f_sa(head_a,head_a->p_next);
+    head_b = f_sb(head_b, head_b->p_next);
 }
+
