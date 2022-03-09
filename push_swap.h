@@ -11,12 +11,10 @@ typedef struct s_node
     struct s_node *p_next;
 }   t_node;
 
-int	ft_atoi(const char *str);
-int	ft_isdigit(int ch);
+int		ft_atoi(const char *str);
+int		ft_isdigit(int ch);
 t_node	*ft_lstnew(int content);
-void f_sa(t_node *head, t_node *next);
-void f_sb(t_node *head, t_node *next);
-void f_ss(t_node *head_a, t_node *head_b);
-void f_pb(t_node *head_a, t_node *head_b);
+void	ft_swap_sa(t_node *head, t_node *next);
+void	ft_swap_sb(t_node *head, t_node *next)
 
 #endif

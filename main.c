@@ -29,30 +29,12 @@ int main(int argc, char **argv)
         printf(" |A%d| ", mv->data);
         mv = mv->p_next;
     }
-    printf("\n");
-    mv = b;
-    while (mv != NULL)
-    {
-        printf(" |B%d|", mv->data);
-        mv = mv->p_next;
-    }
-    printf("\n");
-    //
-    f_sa(a, a->p_next);
+    ft_swap(a, a->p_next);
     mv = a;
-    // JUST PRINT
+    printf("\n");
     while (mv != NULL)
     {
         printf(" |A%d| ", mv->data);
         mv = mv->p_next;
     }
-    printf("\n");
-    mv = b;
-    while (mv != NULL)
-    {
-        printf(" |B%d| ", mv->data);
-        mv = mv->p_next;
-    }
-    printf("\n");
-    //
 }

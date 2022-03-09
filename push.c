@@ -1,19 +1,31 @@
 #include "push_swap.h"
 
-void f_pb(t_node *head_a, t_node *head_b)
+t_node	*ft_push_pa(t_node *head_a, t_node *head_b)
 {
+    int	tmp;
+	t_node	*new;
+	t_node	*save;
 
-    if(!head_a)
+    if (!head_b)
         return ;
-    if(!head_b)
-    {
-        head_b = ft_lstnew(head_a->data);
-        t_node *tmp;
-        tmp = head_a->p_next;
-        head_a = tmp;
-    }
-    else
-    {
-        
-    }
+    tmp = head_b->data;
+	new = ft_lstnew(tmp);
+	new->p_next = head_a;
+	save = head_b;
+	head_b = head_b->p_next;
+	ft_lstdel(head_b);
+	return (new);
+}
+
+t_node	*ft_push_pb(t_node *head_a, t_node *head_b)
+{
+    int	tmp;
+	t_node	*new;
+
+    if (!head_b)
+        return ;
+    tmp = head_a->data;
+	new = ft_lstnew(tmp);
+	new->p_next = head_b;
+	return (new);
 }
