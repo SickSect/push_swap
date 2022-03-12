@@ -19,13 +19,14 @@ int main(int argc, char **argv)
         mv->p_next = ft_lstnew(ft_atoi(argv[i++]));
         mv = mv->p_next;
     }
-    
+  
     mv = a;
     while (mv != NULL)
     {
         printf(" |A%d| ", mv->data);
         mv = mv->p_next;
     }
+    ft_ra(&a);
     mv = a;
     printf("\n");
     while (mv != NULL)
