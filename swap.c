@@ -4,9 +4,7 @@ void ft_sa(t_node **head)
 {
 	t_node *next;
 
-	if (!(*head))
-		return ;
-	else if (!(*head)->p_next)
+	if (*head == NULL || (*head)->p_next == NULL )
 		return ;
 	next = (*head)->p_next;
   //printf(" HEAD %d NEXT %d ", (*head)->data, next->data);
@@ -17,21 +15,20 @@ void ft_sa(t_node **head)
    //printf("\nADRESS HEAD |%p|\n ADDRESS NEXT |%p|\n ", (*head), next);  
 }
 
-void ft_sb(t_node **head);
+void ft_sb(t_node **head)
 {
     t_node	*next;
 
-	if (!(*head))
-		return ;
-	else if (!(*head)->p_next)
+	if (*head == NULL || (*head)->p_next == NULL )
 		return ;
 	next = (*head)->p_next;
 	(*head)->p_next = next->p_next;
-	next->p_next = (*head);
+	next->p_next = *head;
 	*head = next;
 }
 
 void ft_ss(t_node **head_a, t_node **head_b)
 {
-	ft_sa()
+	ft_sa(head_a);
+	ft_sb(head_b);
 }

@@ -19,25 +19,7 @@ int main(int argc, char **argv)
         mv->p_next = ft_lstnew(ft_atoi(argv[i++]));
         mv = mv->p_next;
     }
-
     mv = a;
-    // JUST PRINT
-    while (mv != NULL)
-    {
-        printf(" |A%d| ", mv->data);
-        mv = mv->p_next;
-    }
-    printf("\n");
-    mv = b;
-    while (mv != NULL)
-    {
-        printf(" |B%d| ", mv->data);
-        mv = mv->p_next;
-    }
-    printf("\n");
-    ft_sa(&a);
-    mv = a;
-    // JUST PRINT
     while (mv != NULL)
     {
         printf(" |A%d| ", mv->data);

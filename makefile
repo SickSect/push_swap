@@ -14,7 +14,7 @@ RM		=	rm -rf
 all:		$(NAME)
 
 $(NAME):	$(OBJ)
-			$(CC) $(FLAGS) -o $(NAME) $^ $(LIB)
+			$(CC) $(FLAGS) -fsanitize=address -o $(NAME) $^ $(LIB)
 
 %.o:	%.c
 			$(CC) $(FLAGS) -o $@ -c $<
