@@ -8,9 +8,7 @@ int main(int argc, char **argv)
     t_node *mv;
 
     i = 1;
-       b = malloc(sizeof(t_node));
-    if (!b)
-        return (0);
+    b = NULL;
     a = malloc(sizeof(t_node));
     if (!a)
         return (0);
@@ -33,12 +31,11 @@ int main(int argc, char **argv)
     mv = b;
     while (mv != NULL)
     {
-        printf(" |B%d|", mv->data);
+        printf(" |B%d| ", mv->data);
         mv = mv->p_next;
     }
     printf("\n");
-    //
-    f_pb(a, b);
+    ft_sa(&a);
     mv = a;
     // JUST PRINT
     while (mv != NULL)

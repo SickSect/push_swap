@@ -4,7 +4,7 @@ t_node	*ft_lstnew(int content)
 {
 	t_node	*tmp;
 
-	tmp = (t_node*)malloc(sizeof(*tmp));
+	tmp = malloc(sizeof(t_node));
 	if (!tmp)
 	{
 		tmp = NULL;
