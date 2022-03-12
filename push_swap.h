@@ -11,8 +11,8 @@ typedef struct s_node
     struct s_node *p_next;
 }   t_node;
 
-int	ft_atoi(const char *str);
-int	ft_isdigit(int ch);
+int		ft_atoi(const char *str);
+int		ft_isdigit(int ch);
 t_node	*ft_lstnew(int content);
 void ft_sa(t_node **head);
 void ft_sb(t_node **head);

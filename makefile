@@ -4,8 +4,7 @@ CC			=	gcc
 
 FLAGS		=	-Wall -Wextra -Werror
 
-SRC			=	main.c ft_atoi.c is_digit.c lst_new.c swap.c \
-				push.c
+SRC			=	main.c ft_atoi.c is_digit.c lst_new.c swap.c
 
 OBJ			=	$(SRC:.c=.o)
 
