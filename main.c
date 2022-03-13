@@ -10,6 +10,14 @@ static void ft_cleaner(t_node *head)
     free(head);
 }
 
+static void sort(t_node **head_a, t_node **head_b)
+{
+    int	quick;
+
+	quick = quick_sort(head_a, head_b);
+    (void)quick;
+}
+
 int main(int argc, char **argv)
 {
     int     i;
@@ -29,37 +37,8 @@ int main(int argc, char **argv)
         mv->p_next = ft_lstnew(ft_atoi(argv[i++]));
         mv = mv->p_next;
     }
-  
-    mv = a;
-    while (mv != NULL)
-    {
-        printf(" |A%d| ", mv->data);
-        mv = mv->p_next;
-    }
-    mv = b;
-    printf("\n");
-    while (mv != NULL)
-    {
-        printf(" |A%d| ", mv->data);
-        mv = mv->p_next;
-    }
-    //
-    ft_rra(&a);
-    //
-    mv = a;
-    printf("\n");
-    while (mv != NULL)
-    {
-        printf(" |A%d| ", mv->data);
-        mv = mv->p_next;
-    }
-    mv = b;
-    printf("\n");
-    while (mv != NULL)
-    {
-        printf(" |A%d| ", mv->data);
-        mv = mv->p_next;
-    }
+    // make checker
+    sort(&a, &b);
     ft_cleaner(a);
     ft_cleaner(b);
 }

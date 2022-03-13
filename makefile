@@ -5,7 +5,7 @@ CC			=	gcc
 FLAGS		=	-Wall -Wextra -Werror
 
 SRC			=	main.c ft_atoi.c is_digit.c lst_new.c swap.c rotate.c \
-				ft_lstdel.c irrotate.c
+				ft_lstdel.c irrotate.c quick_sort.c printer.c push.c
 
 OBJ			=	$(SRC:.c=.o)
 
