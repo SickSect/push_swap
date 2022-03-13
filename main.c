@@ -1,5 +1,15 @@
 #include "push_swap.h"
 
+static void ft_cleaner(t_node *head)
+{
+    while(head)
+    {
+        free(head);
+        head = head->p_next;
+    }
+    free(head);
+}
+
 int main(int argc, char **argv)
 {
     int     i;
@@ -26,6 +36,13 @@ int main(int argc, char **argv)
         printf(" |A%d| ", mv->data);
         mv = mv->p_next;
     }
+    mv = b;
+    printf("\n");
+    while (mv != NULL)
+    {
+        printf(" |A%d| ", mv->data);
+        mv = mv->p_next;
+    }
     ft_ra(&a);
     mv = a;
     printf("\n");
@@ -34,4 +51,12 @@ int main(int argc, char **argv)
         printf(" |A%d| ", mv->data);
         mv = mv->p_next;
     }
+    mv = b;
+    printf("\n");
+    while (mv != NULL)
+    {
+        printf(" |A%d| ", mv->data);
+        mv = mv->p_next;
+    }
+    ft_cleaner(a);
 }

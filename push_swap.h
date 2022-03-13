@@ -15,6 +15,7 @@ int		ft_atoi(const char *str);
 int		ft_isdigit(int ch);
 t_node	*ft_lstnew(int content);
 int		ft_lstlen(t_node **head);
+void    ft_lstdel(t_node *del);
 void	ft_sa(t_node **head);
 void	ft_sb(t_node **head);
 void	ft_ss(t_node **head_a, t_node **head_b);
