@@ -24,5 +24,8 @@ void	ft_pb(t_node **head_a, t_node **head_b); // WARNING
 void	ft_ra(t_node **head_a);
 void	ft_rb(t_node **head);
 void	ft_rr(t_node **head_a, t_node **head_b);
+void	ft_rra(t_node **head);
+void	ft_rrb(t_node **head);
+void	ft_rrr(t_node **head_a, t_node **head_b);
 
 #endif

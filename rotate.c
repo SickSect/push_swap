@@ -21,6 +21,8 @@ void	ft_ra(t_node **head)
 	t_node	*last;
 	t_node	*tmp;
 
+	if((*head)->p_next == NULL || !(*head))
+		return ;
 	last = *head;
 	while(last->p_next != NULL )
 		last = last->p_next;
@@ -35,6 +37,8 @@ void	ft_rb(t_node **head)
 	t_node	*last;
 	t_node	*tmp;
 
+	if((*head)->p_next == NULL || !(*head))
+		return ;
 	last = *head;
 	while(last->p_next != NULL )
 		last = last->p_next;

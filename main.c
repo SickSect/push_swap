@@ -43,7 +43,9 @@ int main(int argc, char **argv)
         printf(" |A%d| ", mv->data);
         mv = mv->p_next;
     }
-    ft_ra(&a);
+    //
+    ft_rra(&a);
+    //
     mv = a;
     printf("\n");
     while (mv != NULL)
@@ -59,4 +61,5 @@ int main(int argc, char **argv)
         mv = mv->p_next;
     }
     ft_cleaner(a);
+    ft_cleaner(b);
 }
