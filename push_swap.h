@@ -17,6 +17,8 @@ int		ft_isdigit(int ch);
 t_node	*ft_lstnew(int content);
 int		ft_lstlen(t_node **head);
 void    ft_lstdel(t_node *del);
+int     is_sort(t_node **head);
+void	lst_connect(t_node **head_a, t_node **head_b);
 t_node  *lstlast(t_node **head);
 void	ft_sa(t_node **head);
 void	ft_sb(t_node **head);

@@ -1,17 +1,19 @@
 #include "push_swap.h"
 
-static int	is_sort(t_node **head)
+static void	sort_b(t_node **head)
 {
-	t_node *tmp;
+	t_node *last;
 
-	tmp = *head;
-	while(tmp->p_next != NULL)
+	while(is_sort(head) == -1)
 	{
-		if (tmp->data > tmp->p_next->data)
-			return (-1);
-		tmp = tmp->p_next;
+		last = lstlast(head);
+		if (((last->data > (*head)->p_next->data)) && (*head)->data > (*head)->p_next->data)
+			ft_rb(head);
+		else if (((last->data <= (*head)->p_next->data)) && (*head)->data > (*head)->p_next->data)
+			ft_sb(head);
+		else
+			ft_rb(head);
 	}
-	return (0);
 }
 
 static void	sort_a(t_node **head)
@@ -20,20 +22,13 @@ static void	sort_a(t_node **head)
 
 	while(is_sort(head) == -1)
 	{
-		printf("CYCLE\n");
 		last = lstlast(head);
 		if (((last->data > (*head)->p_next->data)) && (*head)->data > (*head)->p_next->data)
-		{
 			ft_ra(head);
-		}
 		else if (((last->data <= (*head)->p_next->data)) && (*head)->data > (*head)->p_next->data)
-		{
 			ft_sa(head);
-		}
 		else
-		{
 			ft_ra(head);
-		}
 	}
 }
 
@@ -53,7 +48,6 @@ static void	parse_list(t_node **head_a, t_node **head_b, int push, int mid)
 			ft_ra(head_a);
 		}
 	}
-	printer(head_a, head_b);
 }
 
 static void half_sort(t_node **head_a, t_node **head_b)
@@ -61,7 +55,7 @@ static void half_sort(t_node **head_a, t_node **head_b)
 	if(is_sort(head_a) == -1)
 		sort_a(head_a);
 	if(is_sort(head_b) == -1)
-		printf("NOT SORTED\n");
+		sort_b(head_b);
 
 }
 
@@ -83,6 +77,6 @@ int quick_sort(t_node **head_a, t_node **head_b)
 	mid_data = mv->data;
 	parse_list(head_a, head_b, tmp, mid_data);
 	half_sort(head_a, head_b);
-	printer(head_a, head_b);
+	lst_connect(head_a, head_b);
 	return (op);
 }
