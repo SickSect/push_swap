@@ -12,10 +12,15 @@ static void ft_cleaner(t_node *head)
 
 static void sort(t_node **head_a, t_node **head_b)
 {
-    int	quick;
+    int a;
+    int b;
+    t_node *copy;
 
-	quick = quick_sort(head_a, head_b);
-    (void)quick;
+    copy = lst_copier(head_a, copy);
+	a = one_by_one_sort(head_a, head_b);
+    b = half_sort()
+    printf("QUICK IS %d\n", a);
+
 }
 
 int main(int argc, char **argv)

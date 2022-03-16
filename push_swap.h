@@ -20,6 +20,8 @@ void    ft_lstdel(t_node *del);
 int     is_sort(t_node **head);
 void	lst_connect(t_node **head_a, t_node **head_b);
 t_node  *lstlast(t_node **head);
+int     lst_checkfirst(t_node **head);
+t_node	*lst_copier(t_node **head, t_node **copy);
 void	ft_sa(t_node **head);
 void	ft_sb(t_node **head);
 void	ft_ss(t_node **head_a, t_node **head_b);
@@ -31,7 +33,7 @@ void	ft_rr(t_node **head_a, t_node **head_b);
 void	ft_rra(t_node **head);
 void	ft_rrb(t_node **head);
 void	ft_rrr(t_node **head_a, t_node **head_b);
-int     quick_sort(t_node **head_a, t_node **head_b);
+int     one_by_one_sort(t_node **head_a, t_node **head_b);
 
 
 void printer(t_node **head_a, t_node **head_b);

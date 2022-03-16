@@ -4,6 +4,7 @@ void printer(t_node **head_a, t_node **head_b)
 {
     t_node *mv;
 
+    printf("\n");
     mv = *head_a;
     while(mv != NULL)
     {
