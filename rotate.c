@@ -5,9 +5,9 @@ int	ft_lstlen(t_node **head)
 	t_node *tmp;
 	int		counter;
 
-	counter = 0;
+	counter = 1;
 	tmp = *head;
-	while(tmp)
+	while(tmp->p_next)
 	{
 		tmp = tmp->p_next;
 		counter++;

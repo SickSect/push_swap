@@ -2,7 +2,7 @@
 
 static int	ft_whiler(const char *str, int neg, int i)
 {
-	long	res;
+	long long	res;
 	int		max;
 
 	max = 0;
@@ -12,22 +12,16 @@ static int	ft_whiler(const char *str, int neg, int i)
 		res = (res * 10) + (str[i++] - '0');
 		max++;
 	}
-	if (max > 19)
-	{
-		if (neg == 1)
-			return (0);
-		return (-1);
-	}
 	if (neg == 1)
 		return (-1 * res);
 	return (res);
 }
 
-int	ft_atoi(const char *str)
+long long	ft_atoi(const char *str)
 {
-	int		i;
-	int		neg;
-	long	res;
+	int			i;
+	int			neg;
+	long long	res;
 
 	i = 0;
 	neg = 0;

@@ -12,7 +12,6 @@ static void turn_back(t_node **head_a, t_node **head_b, int *op)
 
 static void	push_low(t_node **head_a, t_node **head_b, int *op)
 {
-	(void)head_b;
 	int		tmp;
 	int		counter;
 	t_node	*mv;
