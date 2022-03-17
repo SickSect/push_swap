@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static int	ft_whiler(const char *str, int neg, int i)
+static long long	ft_whiler(const char *str, int neg, int i)
 {
 	long long	res;
 	int		max;

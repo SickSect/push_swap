@@ -23,7 +23,6 @@ static int is_int(char *str)
     long long num;
 
     num = ft_atoi(str);
-    printf("DIG IS %lld\n", num);
     if (num > 2147483647 || num < -2147483648)
         return (-1);
     return (0);
@@ -36,9 +35,7 @@ int check_argv(char **argv, int argc)
     it = 1;
     if (argc < 2)
         return (-1);
-    else if (argc == 2)
-        return (1);
-    else if (argc > 2)
+    else if (argc >= 2)
     {
         while (it < argc)
         {

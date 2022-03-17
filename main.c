@@ -24,7 +24,7 @@ static int add_memory(char **argv, t_node **a, int argc)
     i = 1;
     *a = malloc(sizeof(t_node));
     if (!a)
-        return (-1); //!!!!
+        return (-1);
     (*a)->data = ft_atoi(argv[i++]);
     mv = *a;
     while (i < argc)
@@ -37,8 +37,6 @@ static int add_memory(char **argv, t_node **a, int argc)
 
 int main(int argc, char **argv)
 {
-    int op;
-    (void)op;
     t_node *a;
     t_node *b;
 
@@ -50,9 +48,8 @@ int main(int argc, char **argv)
     else if (check_argv(argv, argc) == 1)
         return (1);
     add_memory(argv, &a, argc);
-    op = one_by_one_sort(&a, &b);
-    //printer(&a, &b);
-    //printf("OP IS %d", op);
+    if (is_sort(&a) == -1)
+        one_by_one_sort(&a, &b);
     ft_cleaner(a, b);
     return (0);
 }
