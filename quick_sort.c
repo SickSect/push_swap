@@ -1,16 +1,40 @@
 #include "push_swap.h"
 
-static void turn_back(t_node **head_a, t_node **head_b, int *op)
+static void rotation(t_node **head_a, int tmp)
 {
-	while((*head_b) != NULL)
+	int counter;
+	int	ra;
+	int	rra;
+	t_node *mv;
+
+	counter = 0;
+	mv = (*head_a);
+	while(mv->data != tmp)
 	{
-		(*op)++;
-		write(1, "pa\n", 3);
-		ft_pa(head_b, head_a);
+		mv = mv->p_next;
+		counter++;
+	}
+	rra = ft_lstlen(head_a) - counter;
+	ra = counter;
+	if(ra > rra)
+	{
+		while(rra--)
+			ft_rra(head_a);
+	}
+	else
+	{
+		while(ra--)
+			ft_ra(head_a);
 	}
 }
 
-static void	push_low(t_node **head_a, t_node **head_b, int *op)
+static void turn_back(t_node **head_a, t_node **head_b)
+{
+	while((*head_b) != NULL)
+		ft_pa(head_b, head_a);
+}
+
+static void	push_low(t_node **head_a, t_node **head_b)
 {
 	int		tmp;
 	int		counter;
@@ -26,26 +50,18 @@ static void	push_low(t_node **head_a, t_node **head_b, int *op)
 		mv = mv->p_next;
 		counter--;
 	}
-	while((*head_a)->data != tmp)
-	{
-		write(1, "ra\n", 3);
-		ft_ra(head_a);
-		(*op)++;
-	}
-	(*op)++;
-	write(1, "pb\n", 3);
+	rotation(head_a, tmp);
 	ft_pb(head_a, head_b);
 }
 
 int one_by_one_sort(t_node **head_a, t_node **head_b)
 {
 	int	counter;
-	int	op;
 
-	op = 0;
 	counter = ft_lstlen(head_a);
-	while(counter-- > 1)
-		push_low(head_a, head_b, &op);
-	turn_back(head_a, head_b, &op);
-	return (op);
+	while(counter-- > 0)
+		push_low(head_a, head_b);
+	turn_back(head_a, head_b);
+	printer(head_a, head_b);
+	return (0);
 }

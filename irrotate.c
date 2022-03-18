@@ -14,6 +14,7 @@ void	ft_rra(t_node **head)
 	pre_last->p_next = NULL;
 	last->p_next = *head;
 	*head = last;
+	write(1, "rra\n", 4);
 }
 
 void	ft_rrb(t_node **head)
@@ -30,6 +31,7 @@ void	ft_rrb(t_node **head)
 	pre_last->p_next = NULL;
 	last->p_next = *head;
 	*head = last;
+	write(1, "rrb\n", 4);
 }
 
 void	ft_rrr(t_node **head_a, t_node **head_b)

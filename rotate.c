@@ -30,6 +30,7 @@ void	ft_ra(t_node **head)
 	tmp = *head;
 	*head = (*head)->p_next;
 	tmp->p_next = NULL;
+	write(1, "ra\n", 3);
 }
 
 void	ft_rb(t_node **head)
@@ -46,6 +47,7 @@ void	ft_rb(t_node **head)
 	tmp = *head;
 	*head = (*head)->p_next;
 	tmp->p_next = NULL;
+	write(1, "rb\n", 3);
 }
 
 void	ft_rr(t_node **head_a, t_node **head_b)

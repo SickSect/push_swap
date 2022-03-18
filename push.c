@@ -20,6 +20,7 @@ void ft_pb(t_node **head_a, t_node **head_b)
         *head_b = *head_a;
         *head_a = new_head;
     }
+    write(1, "pb\n", 3);
 }
 
 void ft_pa(t_node **head_a, t_node **head_b)
@@ -42,4 +43,5 @@ void ft_pa(t_node **head_a, t_node **head_b)
         *head_b = *head_a;
         *head_a = new_head;
     }
+    write(1, "pa\n", 3);
 }
