@@ -46,7 +46,12 @@ int main(int argc, char **argv)
         return (-1);
     }
     else if (check_argv(argv, argc) == 1)
-        return (1);
+    {
+        add_memory(argv, &a, argc);
+        half_sort(&a, argc);
+        ft_cleaner(a, b);
+        return (0);
+    }
     add_memory(argv, &a, argc);
     if (is_sort(&a) == -1)
         one_by_one_sort(&a, &b);

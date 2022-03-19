@@ -50,7 +50,7 @@ int check_argv(char **argv, int argc)
                 return (-1);
             it++;
         }
-        if(argc == 2)
+        if(argc == 3 || argc == 4)
             return (1);
     }
 	return (0);
