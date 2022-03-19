@@ -40,5 +40,6 @@ void	angle_sort(t_node **head_a, t_node **head_b);
 int		check_argv(char **argv, int argc);
 void	re_sort(t_node **head);
 void	half_sort(t_node **head, int argc);
+void    sort(t_node **head_a, t_node **head_b);
 void printer(t_node **head_a, t_node **head_b);
 #endif

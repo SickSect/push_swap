@@ -54,7 +54,8 @@ int main(int argc, char **argv)
     }
     add_memory(argv, &a, argc);
     if (is_sort(&a) == -1)
-        one_by_one_sort(&a, &b);
+        sort(&a, &b);
+        //one_by_one_sort(&a, &b);
     ft_cleaner(a, b);
     return (0);
 }
