@@ -9,7 +9,7 @@ static void three_arg(t_node **head)
 	{
 		if ((*head)->data > (*head)->p_next->data)
 			ft_sa(head);
-		ft_ra(head);
+		ft_rra(head);
 	}
 	else if ((*head)->p_next->data < (*head)->data && (*head)->p_next->data < last->data)
 	{
@@ -25,6 +25,20 @@ static void three_arg(t_node **head)
 	{
 		ft_rra(head);
 		ft_sa(head);
+	}
+}
+
+void	sort_back(t_node **head_a, t_node **head_b, int med)
+{
+	while ((*head_b) != NULL)
+	{
+		if ((*head_b)->data > med)
+		{
+			ft_pa(head_b, head_a);
+			ft_ra(head_a);
+		}
+		else
+			ft_pa(head_b, head_a);
 	}
 }
 

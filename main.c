@@ -39,23 +39,29 @@ int main(int argc, char **argv)
 {
     t_node *a;
     t_node *b;
-
+    if (argc == 2 || argc == 1)
+        return (0);
     if (check_argv(argv, argc) == -1)
     {
         ft_putstr("Error\n");
         return (-1);
     }
-    else if (check_argv(argv, argc) == 1)
+    else if (check_argv(argv, argc) == -1)
     {
-        add_memory(argv, &a, argc);
-        half_sort(&a, argc);
-        ft_cleaner(a, b);
-        return (0);
+       ft_putstr("Error\n");
+        return (-1);
     }
     add_memory(argv, &a, argc);
+    if (check_doubles(&a) == -1)
+    {
+        ft_cleaner(a, b);
+        ft_putstr("Error\n");
+        return (-1);
+    }
+    if (argc == 3 || argc == 4)
+        half_sort(&a, argc);
     if (is_sort(&a) == -1)
         sort(&a, &b);
-        //one_by_one_sort(&a, &b);
     ft_cleaner(a, b);
     return (0);
 }

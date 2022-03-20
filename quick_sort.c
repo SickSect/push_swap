@@ -1,32 +1,6 @@
 #include "push_swap.h"
 
-static void rotation(t_node **head_a, int tmp)
-{
-	int counter;
-	int	ra;
-	int	rra;
-	t_node *mv;
 
-	counter = 0;
-	mv = (*head_a);
-	while(mv->data != tmp)
-	{
-		mv = mv->p_next;
-		counter++;
-	}
-	rra = ft_lstlen(head_a) - counter;
-	ra = counter;
-	if(ra > rra)
-	{
-		while(rra--)
-			ft_rra(head_a);
-	}
-	else
-	{
-		while(ra--)
-			ft_ra(head_a);
-	}
-}
 
 static void turn_back(t_node **head_a, t_node **head_b)
 {
@@ -34,7 +8,7 @@ static void turn_back(t_node **head_a, t_node **head_b)
 		ft_pa(head_b, head_a);
 }
 
-static void	push_low(t_node **head_a, t_node **head_b)
+void	push_low(t_node **head_a, t_node **head_b)
 {
 	int		tmp;
 	int		counter;
