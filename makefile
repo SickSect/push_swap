@@ -7,7 +7,7 @@ FLAGS		=	-Wall -Wextra -Werror
 SRC			=	main.c ft_atoi.c is_digit.c swap.c rotate.c lst_func.c\
 				irrotate.c quick_sort.c printer.c push.c move_func.c\
 				check_argv.c ft_putstr.c half_sort.c \
-				sort.c
+				sort.c main_sort.c
 
 OBJ			=	$(SRC:.c=.o)
 

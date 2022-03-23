@@ -1,5 +1,6 @@
 #include "push_swap.h"
-static int find_median(t_node **head)
+
+int find_median(t_node **head)
 {
     int counter;
     t_node *mv;
@@ -64,7 +65,7 @@ void    parsing_by_med(t_node **by_med, t_node **push_here)
     max = find_max(by_med);
     min = find_min(by_med);
     med = find_median(by_med);
-    printf("MID IS %d MIN IS %d MAX IS %d", med, min, max);
+    //printf("MID IS %d MIN IS %d MAX IS %d", med, min, max);
     while (ft_lstlen(by_med) != 3)
     {
         if ((*by_med)->data != max && (*by_med)->data != min && (*by_med)->data != med)
@@ -75,25 +76,9 @@ void    parsing_by_med(t_node **by_med, t_node **push_here)
 
 void    sort(t_node **head_a, t_node **head_b)
 {
-    t_node *tmp;
-    int med;
-    (void)med;
-    (void)tmp;
-    med = find_median(head_a);
+    (void)head_a;
+    (void)head_b;
     parsing_by_med(head_a, head_b);
     half_sort(head_a, 4);
-    push_less_med(head_a, head_b, med);
-    ft_rra(head_a);
-    ft_pb(head_a, head_b);
-    ft_rra(head_a);
-    ft_pb(head_a, head_b);
-    ft_rra(head_a);
-    push_more_med(head_a, head_b);
-    tmp = lstlast(head_a);
-    while (tmp->data <= med)
-    {
-        ft_rra(head_a);
-        tmp = lstlast(head_a);
-    }
-    //printer(head_a, head_b);
+    main_sort(head_a, head_b);
 }

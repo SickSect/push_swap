@@ -1,6 +1,37 @@
 #include "push_swap.h"
 
-void rotation(t_node **head_a, int tmp)
+int which_one(t_node **head_a, t_node **head_b, int *arr_act)
+{
+	
+	return (0);
+}
+
+int where(t_node **head, int num)
+{
+    t_node *mv;
+    int counter;
+    int a_counter;
+
+    counter = 0;
+    mv = (*head);
+    while(mv != NULL)
+    {
+        if (mv->data < num)
+        {
+            counter++;
+            mv = mv->p_next;
+        }
+        else if (mv->data > num)
+            mv = NULL;
+    }
+    a_counter = (ft_lstlen(head) + 1) - counter;
+    if (a_counter > counter)
+        return (counter);
+    else
+        return (a_counter);
+}
+
+int	rotation(t_node **head_a, int tmp)
 {
 	int counter;
 	int	ra;
@@ -17,47 +48,9 @@ void rotation(t_node **head_a, int tmp)
 	rra = ft_lstlen(head_a) - counter;
 	ra = counter;
 	if(ra > rra)
-	{
-		while(rra--)
-			ft_rra(head_a);
-	}
+		return (rra);
 	else
-	{
-		while(ra--)
-			ft_ra(head_a);
-	}
+		return (ra);
 }
 
-void    push_less_med(t_node **head_a, t_node **head_b, int med)
-{
-    int tmp;
-    t_node *mv;
-
-
-    while (find_min(head_b) < med)
-    {
-        tmp = find_min(head_b);
-        mv = (*head_b);
-        while (mv != NULL)
-        {
-            if (mv->data < med && mv->data > tmp)
-                tmp = mv->data;
-            mv = mv->p_next;
-        }
-        rotation(head_b, tmp);
-        ft_pa(head_b, head_a);
-    }
-}
-
-void    push_more_med(t_node **head_a, t_node **head_b)
-{
-    int tmp;
-
-    while ((*head_b)!= NULL)
-    {
-        tmp = find_max(head_b);
-        rotation(head_b, tmp);
-        ft_pa(head_b, head_a);
-    }
-}
 
