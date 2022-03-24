@@ -6,7 +6,6 @@ static void rotater_a(t_node **head, int counter)
     (void)counter;   
     int ra;
     int rra;
-    int tmp;
 
     ra = counter;
     rra = ft_lstlen(head) - counter;
@@ -41,6 +40,10 @@ void sort_in_a(t_node **head)
         ft_sa(head);
         ft_ra(head);
         ft_ra(head);
+    }
+    else if (counter == 2)
+    {
+        ft_sa(head);
     }
     else
     {
