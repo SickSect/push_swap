@@ -8,6 +8,7 @@
 
 typedef struct s_node
 {
+    int act;
     int data;
     struct s_node *p_next;
 }   t_node;
@@ -39,7 +40,7 @@ void	ft_rr(t_node **head_a, t_node **head_b);
 void	ft_rra(t_node **head);
 void	ft_rrb(t_node **head);
 void	ft_rrr(t_node **head_a, t_node **head_b);
-int which_one(t_node **head_a, t_node **head_b, int *arr_act);
+int		which_one(t_node **head_a, int tmp);
 int     where(t_node **head, int num);
 int		rotation(t_node **head_a, int tmp);
 int     one_by_one_sort(t_node **head_a, t_node **head_b);

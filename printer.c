@@ -4,18 +4,20 @@ void printer(t_node **head_a, t_node **head_b)
 {
     t_node *mv;
 
-    printf("\n");
+    printf("A\n");
     mv = *head_a;
     while(mv != NULL)
     {
-        printf(" |A%d| ", mv->data);
+        printf(" |%d", mv->data);
+        printf(" M_%d| ", mv->act);
         mv = mv->p_next;
     }
-    printf("\n");
+    printf("\nB\n");
     mv = *head_b;
     while(mv != NULL)
     {
-        printf(" |B%d| ", mv->data);
+        printf(" |%d", mv->data);
+        printf(" M_%d| ", mv->act);
         mv = mv->p_next;
     }
 }

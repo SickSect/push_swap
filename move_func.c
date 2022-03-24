@@ -1,34 +1,29 @@
 #include "push_swap.h"
 
-int which_one(t_node **head_a, t_node **head_b, int *arr_act)
+int which_one(t_node **head, int tmp)
 {
-	
+    t_node *mv;
+    mv = (*head);
+    while(mv != NULL)
+    {
+
+    }
 	return (0);
 }
 
 int where(t_node **head, int num)
 {
+    (void)head;
+    (void)num;
     t_node *mv;
-    int counter;
-    int a_counter;
-
-    counter = 0;
+   
     mv = (*head);
-    while(mv != NULL)
+    while (mv != NULL)
     {
-        if (mv->data < num)
-        {
-            counter++;
-            mv = mv->p_next;
-        }
-        else if (mv->data > num)
-            mv = NULL;
+        mv->act = rotation(head, mv->data);
+        mv = mv->p_next;
     }
-    a_counter = (ft_lstlen(head) + 1) - counter;
-    if (a_counter > counter)
-        return (counter);
-    else
-        return (a_counter);
+    return (0);
 }
 
 int	rotation(t_node **head_a, int tmp)
