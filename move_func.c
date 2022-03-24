@@ -1,12 +1,50 @@
 #include "push_swap.h"
 
+static void rotater_a(t_node **head)
+{
+    int rra;
+    int ra;
+    
+}
+
+void sort_in_a(t_node **head)
+{
+    int counter;
+    int data;
+    t_node *mv;
+
+    mv = (*head);
+    data = mv->data;
+    counter = 1;
+    while (mv != NULL)
+    {   
+        if (data > mv->data)
+            counter++;
+        mv = mv->p_next;
+    }
+    if(ft_lstlen(head) - counter == 1)
+    {
+        ft_rra(head);
+        ft_sa(head);
+        ft_ra(head);
+        ft_ra(head);
+    }
+    else
+    {
+
+    }
+}
+
 int which_one(t_node **head, int tmp)
 {
     t_node *mv;
+
     mv = (*head);
     while(mv != NULL)
     {
-
+        if (tmp < mv->data)
+            return (mv->act);
+        mv = mv->p_next;
     }
 	return (0);
 }

@@ -53,4 +53,5 @@ void    main_sort(t_node **head_a, t_node **head_b);
 void    printer(t_node **head_a, t_node **head_b);
 void	sort_back(t_node **head_a, t_node **head_b, int med);
 void    parsing_by_med(t_node **by_med, t_node **push_here);
+void    sort_in_a(t_node **head);
 #endif
