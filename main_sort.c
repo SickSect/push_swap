@@ -36,16 +36,17 @@ static void choose_match(t_node **head_a, t_node **head_b)
     data = mv->data;
     while (mv != NULL)
     {
-        if (act > mv->act && data > mv->data)
+        if (act >= mv->act && data > mv->data)
         {
             act = mv->act;
             data = mv->data;
         }
         mv = mv->p_next;
     }
+    printf("PUSH WILL ACT %d NUM %d\n", act, data);
     rotater_b(head_b, act, data);
     ft_pa(head_b, head_a);
-    printf("ACT %d DATA %d\n", act, data);
+    //printf("ACT %d DATA %d\n", act, data);
 }
 
 static void zero_act(t_node **head_a, t_node **head_b)
@@ -88,9 +89,16 @@ static int check_moves(t_node **head_a, t_node **head_b)
 
 void main_sort(t_node **head_a, t_node **head_b)
 {
-    zero_act(head_a, head_b);
-    check_moves(head_a, head_b);
-    choose_match(head_a, head_b);
-    sort_in_a(head_a);
-    printer(head_a, head_b);
+    int it;
+
+    it = 3;
+    while (it--)
+    {
+        zero_act(head_a, head_b);
+        check_moves(head_a, head_b);
+        choose_match(head_a, head_b);
+        sort_in_a(head_a);
+        printer(head_a, head_b);
+    }
+
 }

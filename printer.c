@@ -20,4 +20,5 @@ void printer(t_node **head_a, t_node **head_b)
         printf(" M_%d| ", mv->act);
         mv = mv->p_next;
     }
+    printf("\n");
 }
