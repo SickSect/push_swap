@@ -40,6 +40,7 @@ void	ft_rr(t_node **head_a, t_node **head_b);
 void	ft_rra(t_node **head);
 void	ft_rrb(t_node **head);
 void	ft_rrr(t_node **head_a, t_node **head_b);
+int     find_ra(t_node **head);
 int		which_one(t_node **head_a, int tmp);
 int     where(t_node **head, int num);
 int		rotation(t_node **head_a, int tmp);

@@ -1,21 +1,28 @@
 #include "push_swap.h"
 
-static void rotater_a(t_node **head, int counter)
-{
-    (void)head;
-    (void)counter;   
+static void rotater_a(t_node **head)
+{  
     int ra;
     int rra;
 
-    ra = counter;
-    rra = ft_lstlen(head) - counter;
+    ra = ;
+    rra = ;
+	printf("RA %d RRA %d\n",ra, rra);
     if (rra < ra)
     {
-       
+       while (rra--)
+	   {
+		   ft_rra(head);
+		   ft_sa(head);
+	   }
     }
     else
     {
-        
+        while(ra--)
+		{
+			ft_sa(head);
+			ft_ra(head);
+		}
     }
 }
 
@@ -47,7 +54,7 @@ void sort_in_a(t_node **head)
     }
     else
     {
-        rotater_a(head, counter);
+        rotater_a(head);
     }
 }
 
