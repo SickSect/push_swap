@@ -91,7 +91,7 @@ void main_sort(t_node **head_a, t_node **head_b)
 {
     int it;
 
-    it = 4;
+    it = 3;
     while (it--)
     {
         zero_act(head_a, head_b);

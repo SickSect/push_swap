@@ -1,5 +1,21 @@
 #include "push_swap.h"
 
+static int take_ra(t_node **head, int num)
+{
+	printf("NUM IS %d\n", num);
+	t_node *mv;
+	int ra;
+
+	mv = (*head)->p_next;
+	ra = 0;
+	while(mv->data != num)
+	{
+		ra++;
+		mv = mv->p_next;
+	}
+	return (ra);
+}
+
 int find_ra(t_node **head)
 {
 	int min;
@@ -11,11 +27,26 @@ int find_ra(t_node **head)
 	{
 		if (min < mv->data)
 			min = mv->data;
-		mv - mv->p_next;
+		mv = mv->p_next;
 	}
-	mv  = (*head);
+	mv  = (*head)->p_next;
 	while(mv->data != min)
 		mv = mv->p_next;
+	while (mv != NULL)
+	{
+		if ((*head)->data > mv->data && mv->data > min)
+			min = mv->data;
+		mv = mv->p_next;
+	}
+	mv = (*head)->p_next;
+	while (mv != NULL)
+	{
+		if ((*head)->data < mv->data)
+			min = mv->data;
+		mv = mv->p_next;
+	}
+	min = take_ra(head, min);
+	return (min);
 }
 
 void	ft_rra(t_node **head)

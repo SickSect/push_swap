@@ -5,8 +5,8 @@ static void rotater_a(t_node **head)
     int ra;
     int rra;
 
-    ra = ;
-    rra = ;
+    ra = find_ra(head);
+    rra = 10;
 	printf("RA %d RRA %d\n",ra, rra);
     if (rra < ra)
     {
