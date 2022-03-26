@@ -1,52 +1,46 @@
 #include "push_swap.h"
-
-static int take_ra(t_node **head, int num)
+static int before_minimum(t_node *min)
 {
-	printf("NUM IS %d\n", num);
-	t_node *mv;
-	int ra;
+	int res;
 
-	mv = (*head)->p_next;
-	ra = 0;
-	while(mv->data != num)
+	res = 0;
+	while (min != NULL)
 	{
-		ra++;
-		mv = mv->p_next;
+		min = min->p_next;
+		res++;
 	}
-	return (ra);
+	return (res);
 }
 
 int find_ra(t_node **head)
 {
-	int min;
 	t_node *mv;
+	int res;
+	int min;
+	int before_min;
 
 	mv = (*head);
-	min = mv->data;
-	while (mv != NULL)
+	res = 0;
+	min = find_min(head);
+	while (mv->data != min)
 	{
-		if (min < mv->data)
-			min = mv->data;
 		mv = mv->p_next;
 	}
-	mv  = (*head)->p_next;
-	while(mv->data != min)
-		mv = mv->p_next;
-	while (mv != NULL)
+	printf("MIN IS %d\n", mv->data);
+	before_min = ft_lstlen(head) - before_minimum(mv); // если из-за операций в начале оказалось несколько чисел
+	if (before_min == 1)
 	{
-		if ((*head)->data > mv->data && mv->data > min)
-			min = mv->data;
-		mv = mv->p_next;
+		while ((*head)->data > mv->data)
+		{
+			res++;
+			mv = mv->p_next;
+		}
 	}
-	mv = (*head)->p_next;
-	while (mv != NULL)
+	else
 	{
-		if ((*head)->data < mv->data)
-			min = mv->data;
-		mv = mv->p_next;
+		while ((*head)->data > mv->data) // пробежать от минимума до конца и от головы до минимума
 	}
-	min = take_ra(head, min);
-	return (min);
+	return (res);
 }
 
 void	ft_rra(t_node **head)
