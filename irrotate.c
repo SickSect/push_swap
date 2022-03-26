@@ -38,7 +38,23 @@ int find_ra(t_node **head)
 	}
 	else
 	{
-		while ((*head)->data > mv->data) // пробежать от минимума до конца и от головы до минимума
+		printf("HEEEREEEE\n");
+		// пробежать от минимума до конца и от головы до минимума
+		while (mv != NULL)
+		{
+			if (mv->data > min && mv->data < (*head)->data)
+				res = mv->data;
+			mv = mv ->p_next;
+		}
+		printf("AFTER FIRST CYCLE %d \n", res);
+		mv = (*head)->p_next;
+		while (mv->data != min)
+		{
+			if (mv->data > min && mv->data < (*head)->data)
+				res = mv->data;
+			mv = mv ->p_next;
+		}
+		printf("Finish NUM is %d\n", res);
 	}
 	return (res);
 }
