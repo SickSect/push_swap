@@ -23,11 +23,9 @@ int find_ra(t_node **head)
 	res = 0;
 	min = find_min(head);
 	while (mv->data != min)
-	{
 		mv = mv->p_next;
-	}
 	printf("MIN IS %d\n", mv->data);
-	before_min = ft_lstlen(head) - before_minimum(mv); // если из-за операций в начале оказалось несколько чисел
+	before_min = ft_lstlen(head) - before_minimum(mv);
 	if (before_min == 1)
 	{
 		while ((*head)->data > mv->data)
@@ -35,18 +33,17 @@ int find_ra(t_node **head)
 			res++;
 			mv = mv->p_next;
 		}
+		printf("RA IS %d\n", res);
 	}
 	else
 	{
-		printf("HEEEREEEE\n");
-		// пробежать от минимума до конца и от головы до минимума
 		while (mv != NULL)
 		{
 			if (mv->data > min && mv->data < (*head)->data)
 				res = mv->data;
 			mv = mv ->p_next;
 		}
-		printf("AFTER FIRST CYCLE %d \n", res);
+		//здесь надо ставить число перед минимумом
 		mv = (*head)->p_next;
 		while (mv->data != min)
 		{
@@ -54,7 +51,15 @@ int find_ra(t_node **head)
 				res = mv->data;
 			mv = mv ->p_next;
 		}
-		printf("Finish NUM is %d\n", res);
+		printf("RESULT IS %d\n", res);
+		min = 0;
+		mv = (*head)->p_next;
+		while (mv->data != res)
+		{
+			min++;
+			mv = mv->p_next;
+		}
+		return (min);
 	}
 	return (res);
 }

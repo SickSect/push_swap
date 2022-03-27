@@ -6,7 +6,7 @@ static void rotater_a(t_node **head)
     int rra;
 
     ra = find_ra(head);
-    rra = 10;
+    rra = ft_lstlen(head) - ra;
 	printf("RA %d RRA %d\n",ra, rra);
     if (rra < ra)
     {
@@ -18,11 +18,14 @@ static void rotater_a(t_node **head)
     }
     else
     {
+        if (ra == 0)
+            ft_sa(head);
         while(ra--)
 		{
 			ft_sa(head);
 			ft_ra(head);
 		}
+        
     }
 }
 
