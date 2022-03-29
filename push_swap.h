@@ -42,7 +42,6 @@ void		ft_rrb(t_node **head);
 void		ft_rrr(t_node **head_a, t_node **head_b);
 int     	find_ra(t_node **head);
 int			which_one(t_node **head_a, int tmp);
-int			where(t_node **head, int num);
 int			rotation(t_node **head_a, int tmp);
 int			one_by_one_sort(t_node **head_a, t_node **head_b);
 int			check_argv(char **argv, int argc);
@@ -53,5 +52,6 @@ void		main_sort(t_node **head_a, t_node **head_b);
 void		printer(t_node **head_a, t_node **head_b);
 void   		parsing_by_med(t_node **by_med, t_node **push_here);
 void   		sort_in_a(t_node **head);
-void		pre_check(t_node **head_a, t_node **head_b);
+void		pre_check(t_node **head_a, t_node **head_b); // !!
+int rotation_after_push(t_node **head_a, int tmp);
 #endif

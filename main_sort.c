@@ -74,6 +74,7 @@ static int check_moves(t_node **head_a, t_node **head_b)
     while(mv != NULL)
     {
         mv->act = rotation(head_b, mv->data) + 1;
+        printf("ACT IS %d  ", mv->act);
         mv = mv->p_next;
     }
     return (0);
@@ -90,7 +91,7 @@ void main_sort(t_node **head_a, t_node **head_b)
         check_moves(head_a, head_b);
         choose_match(head_a, head_b);
         sort_in_a(head_a);
-        //printer(head_a, head_b);
     }
+    printer(head_a, head_b);
 
 }

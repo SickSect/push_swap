@@ -1,5 +1,10 @@
 #include "push_swap.h"
 
+int rotation_after_push(t_node **head_a, int tmp)
+{
+    
+}
+
 static void rotater_a(t_node **head)
 {  
     int ra;
@@ -7,7 +12,6 @@ static void rotater_a(t_node **head)
 
     ra = find_ra(head);
     rra = ft_lstlen(head) - ra;
-	printf("RA %d RRA %d\n",ra, rra);
     if (rra < ra)
     {
        while (rra--)
@@ -73,21 +77,6 @@ int which_one(t_node **head, int tmp)
         mv = mv->p_next;
     }
 	return (0);
-}
-
-int where(t_node **head, int num)
-{
-    (void)head;
-    (void)num;
-    t_node *mv;
-   
-    mv = (*head);
-    while (mv != NULL)
-    {
-        mv->act = rotation(head, mv->data);
-        mv = mv->p_next;
-    }
-    return (0);
 }
 
 int	rotation(t_node **head_a, int tmp)
