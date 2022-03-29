@@ -65,7 +65,6 @@ void    parsing_by_med(t_node **by_med, t_node **push_here)
     max = find_max(by_med);
     min = find_min(by_med);
     med = find_median(by_med);
-    //printf("MID IS %d MIN IS %d MAX IS %d", med, min, max);
     while (ft_lstlen(by_med) != 3)
     {
         if ((*by_med)->data != max && (*by_med)->data != min && (*by_med)->data != med)
@@ -78,6 +77,7 @@ void    sort(t_node **head_a, t_node **head_b)
 {
     (void)head_a;
     (void)head_b;
+    pre_check(head_a, head_b);
     parsing_by_med(head_a, head_b);
     half_sort(head_a, 4);
     main_sort(head_a, head_b);

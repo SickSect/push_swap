@@ -43,7 +43,6 @@ int find_ra(t_node **head)
 				res = mv->data;
 			mv = mv ->p_next;
 		}
-		//здесь надо ставить число перед минимумом
 		mv = (*head)->p_next;
 		while (mv->data != min)
 		{
