@@ -78,7 +78,7 @@ void    sort(t_node **head_a, t_node **head_b)
     (void)head_a;
     (void)head_b;
     pre_check(head_a, head_b);
-    parsing_by_med(head_a, head_b);
-    half_sort(head_a, 4);
+    //parsing_by_med(head_a, head_b);
+    //half_sort(head_a, 4);
     main_sort(head_a, head_b);
 }

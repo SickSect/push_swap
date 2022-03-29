@@ -83,7 +83,7 @@ void main_sort(t_node **head_a, t_node **head_b)
 {
     int it;
 
-    it = 6;
+    it = 1;
     while (it--)
     {
         zero_act(head_a, head_b);

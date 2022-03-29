@@ -24,7 +24,6 @@ int find_ra(t_node **head)
 	min = find_min(head);
 	while (mv->data != min)
 		mv = mv->p_next;
-	printf("MIN IS %d\n", mv->data);
 	before_min = ft_lstlen(head) - before_minimum(mv);
 	if (before_min == 1)
 	{
@@ -33,7 +32,6 @@ int find_ra(t_node **head)
 			res++;
 			mv = mv->p_next;
 		}
-		printf("RA IS %d\n", res);
 	}
 	else
 	{
@@ -50,7 +48,6 @@ int find_ra(t_node **head)
 				res = mv->data;
 			mv = mv ->p_next;
 		}
-		printf("RESULT IS %d\n", res);
 		min = 0;
 		mv = (*head)->p_next;
 		while (mv->data != res)

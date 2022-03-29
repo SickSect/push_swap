@@ -1,48 +1,71 @@
 #include "push_swap.h"
 
-void pre_check(t_node **head_a, t_node **head_b)
+/*
+static int up_count(t_node **head_a)
 {
-	(void)head_b;
 	t_node	*mv;
 	int		last_data;
 	int		count;
-	int		fin_count;
-	int min_fin_count;
-	
-	last_data = (*head_a)->data;
-	mv = (*head_a)->p_next;
-	count = 0;
-	fin_count = 0;
-	while (mv != NULL)
-	{
-		if (mv->data > last_data)
-			count++;
-		else
-		{
-			if (fin_count < count)
-				fin_count = count;
-			count = 0;
-		}
-		last_data = mv->data;
-		mv = mv->p_next;
-	}
 
 	last_data = (*head_a)->data;
 	mv = (*head_a)->p_next;
 	count = 0;
-	min_fin_count = 0;
+	while (mv != NULL)
+	{
+		if (mv->data > last_data)
+			count++;
+		last_data = mv->data;
+		mv = mv->p_next;
+	}
+	return (count);
+}
+
+static int dw_count(t_node **head_a)
+{
+	t_node	*mv;
+	int		last_data;
+	int		count;
+
+	last_data = (*head_a)->data;
+	mv = (*head_a)->p_next;
+	count = 0;
 	while (mv != NULL)
 	{
 		if (mv->data < last_data)
 			count++;
-		else
-		{
-			if (min_fin_count < count)
-				min_fin_count = count;
-			count = 0;
-		}
 		last_data = mv->data;
 		mv = mv->p_next;
 	}
-	printf(" THERE IS %d ELEMENTS IS SORTED and %d reverse\n", fin_count, min_fin_count);
+	return (count);
+}
+*/
+
+static void up_cut(t_node **head_a, t_node **head_b)
+{
+	printf("UP\n");
+	int cycle;
+	int last_data;
+
+	cycle = ft_lstlen(head_a);
+	last_data = (*head_a)->data;
+	while(cycle--)
+	{
+		if (last_data < (*head_a)->p_next->data)
+		{
+			ft_ra(head_a);
+			last_data = (*head_a)->data;
+		}
+		else
+		{
+			ft_sa(head_a);
+			ft_pb(head_a, head_b);
+		}
+	}
+	ft_ra(head_a);
+}
+
+void pre_check(t_node **head_a, t_node **head_b)
+{
+	up_cut(head_a, head_b);
+	printer(head_a, head_b);
 }
