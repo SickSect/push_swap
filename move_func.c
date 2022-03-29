@@ -1,104 +1,21 @@
 #include "push_swap.h"
 
-int rotation_after_push(t_node **head_a, int tmp)
+void    parsing_by_med(t_node **by_med, t_node **push_here)
 {
-    
-}
+    int max;
+    int min;
+    int med;
 
-static void rotater_a(t_node **head)
-{  
-    int ra;
-    int rra;
-
-    ra = find_ra(head);
-    rra = ft_lstlen(head) - ra;
-    if (rra < ra)
+    max = find_max(by_med);
+    min = find_min(by_med);
+    med = find_median(by_med);
+    while (ft_lstlen(by_med) != 3)
     {
-       while (rra--)
-	   {
-		   ft_rra(head);
-		   ft_sa(head);
-	   }
-    }
-    else
-    {
-        if (ra == 0)
-            ft_sa(head);
-        while(ra--)
-		{
-			ft_sa(head);
-			ft_ra(head);
-		}
-        
+        if ((*by_med)->data != max && (*by_med)->data != min && (*by_med)->data != med)
+            ft_pb(by_med, push_here);
+        ft_ra(by_med);
     }
 }
 
-void sort_in_a(t_node **head)
-{
-    int counter;
-    int data;
-    t_node *mv;
-
-    mv = (*head);
-    data = mv->data;
-    counter = 1;
-    while (mv != NULL)
-    {   
-        if (data > mv->data)
-            counter++;
-        mv = mv->p_next;
-    }
-    if(ft_lstlen(head) - counter == 1)
-    {
-        ft_rra(head);
-        ft_sa(head);
-        ft_ra(head);
-        ft_ra(head);
-    }
-    else if (counter == 2)
-    {
-        ft_sa(head);
-    }
-    else
-    {
-        rotater_a(head);
-    }
-}
-
-int which_one(t_node **head, int tmp)
-{
-    t_node *mv;
-
-    mv = (*head);
-    while(mv != NULL)
-    {
-        if (tmp < mv->data)
-            return (mv->act);
-        mv = mv->p_next;
-    }
-	return (0);
-}
-
-int	rotation(t_node **head_a, int tmp)
-{
-	int counter;
-	int	ra;
-	int	rra;
-	t_node *mv;
-
-	counter = 0;
-	mv = (*head_a);
-	while(mv->data != tmp)
-	{
-		mv = mv->p_next;
-		counter++;
-	}
-	rra = ft_lstlen(head_a) - counter;
-	ra = counter;
-	if(ra > rra)
-		return (rra);
-	else
-		return (ra);
-}
 
 

@@ -56,20 +56,21 @@ int find_min(t_node **head)
     return (tmp);
 }
 
-void    parsing_by_med(t_node **by_med, t_node **push_here)
+void zero_act(t_node **head_a, t_node **head_b)
 {
-    int max;
-    int min;
-    int med;
+    t_node *mv;
 
-    max = find_max(by_med);
-    min = find_min(by_med);
-    med = find_median(by_med);
-    while (ft_lstlen(by_med) != 3)
+    mv = (*head_a);
+    while(mv != NULL)
     {
-        if ((*by_med)->data != max && (*by_med)->data != min && (*by_med)->data != med)
-            ft_pb(by_med, push_here);
-        ft_ra(by_med);
+        mv->act = -1;
+        mv = mv->p_next;
+    }
+    mv = (*head_b);
+    while(mv != NULL)
+    {
+        mv->act = -1;
+        mv = mv->p_next;
     }
 }
 
@@ -77,8 +78,12 @@ void    sort(t_node **head_a, t_node **head_b)
 {
     (void)head_a;
     (void)head_b;
-    //pre_check(head_a, head_b); repair it
-    parsing_by_med(head_a, head_b);
-    half_sort(head_a, 4);
-    main_sort(head_a, head_b);
+    t_node *here;
+   
+    here = pre_check(head_a);
+    if (here->act <= 3)
+        parsing_by_med(head_a, head_b);
+    else
+        smart_parcing(head_a, head_b, here);
+    printer(head_a, head_b);
 }

@@ -48,10 +48,8 @@ int			check_argv(char **argv, int argc);
 void		re_sort(t_node **head);
 void		half_sort(t_node **head, int argc);
 void		sort(t_node **head_a, t_node **head_b);
-void		main_sort(t_node **head_a, t_node **head_b);
 void		printer(t_node **head_a, t_node **head_b);
-void   		parsing_by_med(t_node **by_med, t_node **push_here);
-void   		sort_in_a(t_node **head);
-void		pre_check(t_node **head_a, t_node **head_b); // !!
-int rotation_after_push(t_node **head_a, int tmp);
+t_node      *pre_check(t_node **head_a);
+void		parsing_by_med(t_node **by_med, t_node **push_here);
+void		smart_parcing(t_node **head_a, t_node **head_b, t_node *start);
 #endif

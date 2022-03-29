@@ -13,7 +13,8 @@ static void ft_cleaner(t_node *head_a, t_node *head_b)
         free(head_b);
         head_b = head_b->p_next;
     }
-    free(head_b);
+    if (head_b)
+        free(head_b);
 }
 
 static int add_memory(char **argv, t_node **a, int argc)
@@ -39,6 +40,7 @@ int main(int argc, char **argv)
 {
     t_node *a;
     t_node *b;
+    b = NULL;
     if (argc == 2 || argc == 1)
         return (0);
     if (check_argv(argv, argc) == -1)
