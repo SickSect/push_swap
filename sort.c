@@ -63,21 +63,19 @@ void zero_act(t_node **head_a, t_node **head_b)
     mv = (*head_a);
     while(mv != NULL)
     {
-        mv->act = -1;
+        mv->act = 0;
         mv = mv->p_next;
     }
     mv = (*head_b);
     while(mv != NULL)
     {
-        mv->act = -1;
+        mv->act = 0;
         mv = mv->p_next;
     }
 }
 
 void    sort(t_node **head_a, t_node **head_b)
 {
-    (void)head_a;
-    (void)head_b;
     t_node *here;
    
     here = pre_check(head_a);
@@ -85,5 +83,6 @@ void    sort(t_node **head_a, t_node **head_b)
         parsing_by_med(head_a, head_b);
     else
         smart_parcing(head_a, head_b, here);
+    main_sort(head_a, head_b);
     printer(head_a, head_b);
 }

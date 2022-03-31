@@ -8,7 +8,7 @@ void printer(t_node **head_a, t_node **head_b)
     mv = *head_a;
     while(mv != NULL)
     {
-        printf(" |%d", mv->data);
+        printf(" |%d|", mv->data);
         printf(" M_%d| ", mv->act);
         mv = mv->p_next;
     }
@@ -16,7 +16,7 @@ void printer(t_node **head_a, t_node **head_b)
     mv = *head_b;
     while(mv != NULL)
     {
-        printf(" |%d", mv->data);
+        printf(" |%d|", mv->data);
         printf(" M_%d| ", mv->act);
         mv = mv->p_next;
     }

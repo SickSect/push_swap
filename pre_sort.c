@@ -59,5 +59,26 @@ t_node *pre_check(t_node **head_a)
 
 void smart_parcing (t_node **head_a, t_node **head_b, t_node *start)
 {
-	
+	t_node	*last_pre_check;
+	int		last;
+
+	while ((*head_a)->data != start->data)
+		ft_ra(head_a);
+	last_pre_check = pre_check(head_a);
+	if (start->act < last_pre_check->act)
+		start = last_pre_check;
+	while ((*head_a)->data != start->data)
+		ft_ra(head_a);
+	last = start->data;
+	ft_ra(head_a);
+	while(ft_lstlen(head_a) != start->act)
+	{
+		if (last < (*head_a)->data)
+		{
+			last = (*head_a)->data;
+			ft_ra(head_a);
+		}
+		else
+			ft_pb(head_a, head_b);
+	}
 }
