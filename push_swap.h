@@ -55,4 +55,5 @@ void		smart_parcing(t_node **head_a, t_node **head_b, t_node *start);
 void        zero_act(t_node **head_a, t_node **head_b);
 void        main_sort(t_node **head_a, t_node **head_b);
 void		chose_n_move(t_node **head_a, t_node **head_b);
+void        basic_rotater(t_node **head, int data);
 #endif
