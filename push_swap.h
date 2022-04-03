@@ -41,9 +41,6 @@ void		ft_rra(t_node **head);
 void		ft_rrb(t_node **head);
 void		ft_rrr(t_node **head_a, t_node **head_b);
 int     	find_ra(t_node **head);
-int			which_one(t_node **head_a, int tmp);
-int			rotation(t_node **head_a, int tmp);
-int			one_by_one_sort(t_node **head_a, t_node **head_b);
 int			check_argv(char **argv, int argc);
 void		re_sort(t_node **head);
 void		half_sort(t_node **head, int argc);
@@ -56,4 +53,6 @@ void        zero_act(t_node **head_a, t_node **head_b);
 void        main_sort(t_node **head_a, t_node **head_b);
 void		chose_n_move(t_node **head_a, t_node **head_b);
 void        basic_rotater(t_node **head, int data);
+int         complex_counter(t_node **head_a, int data, int before_min);
+int         count_rotation_b(t_node **head, int data);
 #endif

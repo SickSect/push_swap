@@ -1,17 +1,51 @@
 #include "push_swap.h"
 
-static int count_rotation_a(t_node **head_a, int data)
+int count_rotation_b(t_node **head, int data)
 {
-    //SHIT
-    //Нужно учитывать, что после первого пуша и поворотов
-    // у меня сдвигается минимум и теперь мне чекать надо все иначе слегка
-    //..ПОмучаемся да сделаем
+    t_node	*mv;
+	int		tmp;
 
+	tmp = 0;
+    mv = (*head);
+	while (mv != NULL && mv->data != data)
+	{
+		tmp++;
+		mv = mv->p_next;
+	}
+	if (tmp > ft_lstlen(head) / 2)
+		return (ft_lstlen(head) - tmp);
+	else
+		return (tmp);
 }
 
-static int count_rotation_b(t_node **head, int data)
+static int count_rotation_a(t_node **head_a, int data) // head and data need to sort
 {
-    // FORGET ABOUT STANDING
+	int		before_min;
+	int		tmp;
+	t_node *mv;
+
+	mv = (*head_a);
+	before_min = 0;
+	tmp = 0;
+	while (mv != NULL && mv->data != find_min(head_a))
+	{
+		before_min++;
+		mv = mv->p_next;
+	}
+	if (before_min == 1)
+	{
+		while (mv->data < data)
+		{
+			tmp++;
+			mv = mv->p_next;
+		}
+		if (tmp > ft_lstlen(head_a) / 2)
+			return (ft_lstlen(head_a) - tmp);
+		else
+			return (tmp);
+	}
+	else
+		return (complex_counter(head_a, data, before_min));
 }
 
 static void count_act(t_node **head_a, t_node **head_b)

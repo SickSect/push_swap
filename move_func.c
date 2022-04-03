@@ -1,5 +1,27 @@
 #include "push_swap.h"
 
+int complex_counter(t_node **head_a, int data, int before_min)
+{
+	int 		stop;
+	t_node		*mv;
+
+	mv = (*head_a);
+	stop = before_min;
+	while (before_min-- && mv != NULL)
+		mv = mv->p_next;
+	while (mv->p_next != NULL && mv->data < data)
+		mv = mv->p_next;
+	if (mv->data < data)
+	{
+		mv = (*head_a);
+		while (stop-- && mv->data < data)
+		{
+			mv = mv->p_next;
+		}
+	}
+	return (count_rotation_b(head_a, mv->data));
+}
+
 static void ft_rotation_at_b(t_node **head_b, int act)
 {
 	t_node	*mv;
