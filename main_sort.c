@@ -15,13 +15,9 @@ static int count_rotation_a(t_node **head_a, int data)
 		mv = mv->p_next;
 	}
 	if (counter < mid)
-    {
         return (counter);
-    }
     else
-    {
         return (ft_lstlen(head_a) - counter);
-    }
 }
 
 static int count_rotation_b(t_node **head, int data)
@@ -39,13 +35,9 @@ static int count_rotation_b(t_node **head, int data)
         mv = mv->p_next;
     }
     if (counter < mid)
-    {
         return (counter);
-    }
     else
-    {
         return (ft_lstlen(head) - counter);
-    }
 }
 
 static void count_act(t_node **head_a, t_node **head_b)
@@ -63,10 +55,11 @@ static void count_act(t_node **head_a, t_node **head_b)
 
 void main_sort(t_node **head_a, t_node **head_b)
 {
-    int it = 2;
+    int it = 1;
     while(head_b != NULL && it--)
     {
 		zero_act(head_a, head_b);
         count_act(head_a, head_b);
+        chose_n_move(head_a, head_b);
     }
 }

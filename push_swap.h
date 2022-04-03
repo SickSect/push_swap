@@ -54,4 +54,5 @@ void		parsing_by_med(t_node **by_med, t_node **push_here);
 void		smart_parcing(t_node **head_a, t_node **head_b, t_node *start);
 void        zero_act(t_node **head_a, t_node **head_b);
 void        main_sort(t_node **head_a, t_node **head_b);
+void		chose_n_move(t_node **head_a, t_node **head_b);
 #endif
