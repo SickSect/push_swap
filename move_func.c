@@ -2,12 +2,32 @@
 
 int complex_counter(t_node **head_a, int data, int before_min)
 {
+	(void)head_a;
+	printf("DATA %d, BEFORE MIN %d\n",data, before_min);
+	t_node	*mv;
+	int		search;
+
+	mv = (*head_a);
+	search = 0;
+	while (before_min-- && mv != NULL)
+		mv = mv->p_next;
+	printf("STAY AT %d\n", mv->data);
+	while (mv != NULL)
+	{
+		if (mv->data > data)
+			search = mv->data;
+		mv = mv->p_next;
+	}
+	
+	printf("FOUND %d\n", search);
+	return (0);
+	/*
 	int 		stop;
 	t_node		*mv;
 
 	mv = (*head_a);
 	stop = before_min;
-	while (before_min-- && mv != NULL)
+	while (--before_min && mv != NULL)
 		mv = mv->p_next;
 	printf("MIN IS %d\n", mv->data);
 	while (mv != NULL && mv->data < data)
@@ -15,12 +35,13 @@ int complex_counter(t_node **head_a, int data, int before_min)
 	if (mv->data < data)
 	{
 		mv = (*head_a);
-		while (stop-- && mv->data < data)
+		while (--stop && mv->data < data && mv != NULL)
 		{
 			mv = mv->p_next;
 		}
 	}
 	return (count_rotation_b(head_a, mv->data));
+	*/
 }
 
 static void ft_rotation_at_b(t_node **head_b, int act)

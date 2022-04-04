@@ -61,7 +61,7 @@ static void count_act(t_node **head_a, t_node **head_b)
     }
 }
 
-static void move_in_a(t_node **head_a, t_node **head_b)
+static void move_in_a(t_node **head_a)
 {
     int     min;
     int     counter;
@@ -80,19 +80,20 @@ static void move_in_a(t_node **head_a, t_node **head_b)
         mv = mv->p_next;
     }
     if  (counter == 1)
-        basic_rotater(head, (*head)->data);
+        basic_rotater(head_a, (*head_a)->data);
     else
-        complex_rotater(head, (*head)->data, min);
+        complex_rotater(head_a, (*head_a)->data, min);
 }
 
 void main_sort(t_node **head_a, t_node **head_b)
 {
-    int it = 1;
+    int it = 2;
     while(head_b != NULL && it--)
     {
 		zero_act(head_a, head_b);
         count_act(head_a, head_b);
         chose_n_move(head_a, head_b);
-        move_in_a(head_a, head_b);
+        move_in_a(head_a);
+		printer(head_a, head_b);
     }
 }
