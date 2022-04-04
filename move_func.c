@@ -9,7 +9,8 @@ int complex_counter(t_node **head_a, int data, int before_min)
 	stop = before_min;
 	while (before_min-- && mv != NULL)
 		mv = mv->p_next;
-	while (mv->p_next != NULL && mv->data < data)
+	printf("MIN IS %d\n", mv->data);
+	while (mv != NULL && mv->data < data)
 		mv = mv->p_next;
 	if (mv->data < data)
 	{

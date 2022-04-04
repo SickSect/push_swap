@@ -29,3 +29,11 @@ void basic_rotater(t_node **head, int data)
         }
     }
 }
+
+void complex_rotater(t_node **head, int data, min)
+{
+    t_node *mv;
+
+    mv = (*head);
+    
+}
