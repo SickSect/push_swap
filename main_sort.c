@@ -87,13 +87,27 @@ static void move_in_a(t_node **head_a)
 
 void main_sort(t_node **head_a, t_node **head_b)
 {
-    int it = 2;
-    while(head_b != NULL && it--)
+    int	it;
+
+	it = ft_lstlen(head_b);
+    while(it--)
     {
 		zero_act(head_a, head_b);
         count_act(head_a, head_b);
         chose_n_move(head_a, head_b);
         move_in_a(head_a);
-		printer(head_a, head_b);
     }
+	it = count_rotation_b(head_a, find_min(head_a));
+	if (it > ft_lstlen(head_a) / 2)
+	{
+		it = ft_lstlen(head_a) - it;
+		while (it--)
+			ft_ra(head_a);
+	}
+	else
+	{
+		while (it--)
+			ft_rra(head_a);
+	}
+	printer(head_a, head_b);
 }
