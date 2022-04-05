@@ -1,14 +1,10 @@
 #include "push_swap.h"
 
-static void	parcer_med_b(t_node **head_a, t_node **head_b, int chunk)
+static int	parcer_med_b(t_node **head_a, t_node **head_b, int chunk, int med)
 {
-	(void)head_a;
-    int med;
 	int counter;
 
-    med = find_median_chunk(head_b, chunk);
 	counter = 0;
-	printf("med is %d ", med);
 	while (chunk--)
 	{
 		if ((*head_b)->data > med)
@@ -18,22 +14,30 @@ static void	parcer_med_b(t_node **head_a, t_node **head_b, int chunk)
 			counter++;
 			ft_rb(head_b);
 		}
+        if ((*head_a)->data > (*head_a)->p_next->data)
+            ft_sa(head_a);
 	}
-	while (counter--)
-	{
-		ft_rrb(head_b);
-		ft_pa(head_b, head_a);
-	}
+	return (counter);
 }
 
 static void	parcer_b_to_a(t_node **head_a, t_node **head_b, int chunk)
 {
-    (void)head_a;
-    (void)head_b;
+    int med;
+    int counter;
+
     if (chunk == 1)
         ft_pa(head_b, head_a);
 	else
-		parcer_med_b(head_a, head_b, chunk);
+    {
+        med = find_median_chunk(head_b, chunk);
+        counter = parcer_med_b(head_a, head_b, chunk, med);
+        while (counter--)
+	    {
+		    ft_rrb(head_b);
+		    ft_pa(head_b, head_a);
+	    }
+    }
+		
 	printf("  CHUNK IS %d\n", chunk);
 }
 
