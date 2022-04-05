@@ -76,13 +76,10 @@ void zero_act(t_node **head_a, t_node **head_b)
 
 void    sort(t_node **head_a, t_node **head_b)
 {
-    t_node *here;
-   
-    here = pre_check(head_a);
-    if (here->act <= 3)
-        parsing_by_med(head_a, head_b);
-    else
-        smart_parcing(head_a, head_b, here);
-    main_sort(head_a, head_b);
-    printer(head_a, head_b);
+    int it = 1;
+    while (it--)
+    {
+        zero_act(head_a, head_b);
+        quick_sort(head_a, head_b);
+    }
 }

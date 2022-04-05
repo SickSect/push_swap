@@ -1,7 +1,7 @@
 #include "push_swap.h"
 
 
-void static rotate_after_push(t_node **head, int counter)
+static void rotate_after_push(t_node **head, int counter)
 {
     if (counter == 1)
         ft_sa(head);
