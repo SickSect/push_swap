@@ -58,4 +58,5 @@ int         complex_counter(t_node **head_a, int data, int before_min);
 void        complex_rotater(t_node **head, int data, int min);
 void		quick_sort(t_node **head_a, t_node **head_b);
 int			find_median_chunk(t_node **head_b, int chunk);
+int         find_amount(t_node **head);
 #endif

@@ -7,11 +7,11 @@ int find_median(t_node **head)
     t_node *m_mv;
 
     m_mv = (*head);
-    while(m_mv->p_next != NULL)
+    while(m_mv->p_next != NULL && counter != ft_lstlen(head) / 2)
     {
         mv = (*head);
         counter = 0;
-        while(mv != NULL)
+        while(mv != NULL && counter != ft_lstlen(head) / 2)
         {
             if(mv->data > m_mv->data)
                 counter++;

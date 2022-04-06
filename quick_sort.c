@@ -35,6 +35,8 @@ static void	parcer_b_to_a(t_node **head_a, t_node **head_b, int chunk)
 	    {
 		    ft_rrb(head_b);
 		    ft_pa(head_b, head_a);
+            if ((*head_a)->data > (*head_a)->p_next->data)
+                ft_sa(head_a);
 	    }
     }
 		
@@ -47,9 +49,12 @@ static int	parcer_a_to_b(t_node **head_a, t_node **head_b, int med)
     int counter;
 
     counter = 0;
-    it = ft_lstlen(head_a) / 2;
+    it = find_amount(head_a);
+    printf("MED IS %d IT IS %d\n", med, it);
     while (it)
     {
+        printf("MED IS %d IT IS %d\n", med, it);
+        printer(head_a, head_b);
         if ((*head_a)->data < med)
         {
             it--;
@@ -58,6 +63,7 @@ static int	parcer_a_to_b(t_node **head_a, t_node **head_b, int med)
         }
 	    else
 		    ft_ra(head_a);
+        sleep(2);
     }
     return (counter);
 }
@@ -77,7 +83,8 @@ void	quick_sort(t_node **head_a, t_node **head_b)
             med = (*head_a)->p_next->data;
     }
 	chunk = parcer_a_to_b(head_a, head_b, med);
-    //printf("CHUNK IS %d\n", chunk);
+    printf("FIN PARCE A TO B\n");
+    sleep(4);
     if (ft_lstlen(head_a) != 1)
         quick_sort(head_a, head_b);
     parcer_b_to_a(head_a, head_b, chunk);

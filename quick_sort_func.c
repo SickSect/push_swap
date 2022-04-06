@@ -38,3 +38,17 @@ int	find_median_chunk(t_node **head_b, int chunk)
 	mv = (*head_b);
 	return (median_chunk(head_b, chunk, shield));
 }
+
+int	find_amount(t_node **head)
+{
+	int len;
+
+	len = ft_lstlen(head);
+	if (len % 2 == 0 && len != 2)
+		return (len / 2 - 1);
+	else if (len == 2)
+		return (1);
+	else
+		return (len / 2);
+
+}
