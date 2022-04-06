@@ -7,21 +7,21 @@ static int median_chunk(t_node **head_b, int chunk, int shield)
 	int		counter;
 
 	mv = (*head_b);
-	while(mv->data != shield && counter != chunk / 2)
+	while(mv->data != shield)
 	{
 		m_mv = (*head_b);
 		counter = 0;
-		while (m_mv->data != shield && counter != chunk / 2)
+		while (m_mv->data != shield)
 		{
 			if (m_mv->data < mv->data)
 				counter++;
 			m_mv = m_mv->p_next;
 		}
+		if (counter == chunk / 2)
+			return (mv->data);
 		mv = mv->p_next;
 	}
-	m_mv = (*head_b);
-	printf("MID IS %d\n", m_mv->data);
-	return (m_mv->data);
+	return (0);
 }
 
 int	find_median_chunk(t_node **head_b, int chunk)

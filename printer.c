@@ -4,7 +4,7 @@ void printer(t_node **head_a, t_node **head_b)
 {
     t_node *mv;
 
-    printf("A\n");
+    printf("A");
     mv = *head_a;
     while(mv != NULL)
     {
@@ -12,7 +12,7 @@ void printer(t_node **head_a, t_node **head_b)
         printf(" M_%d| ", mv->act);
         mv = mv->p_next;
     }
-    printf("\nB\n");
+    printf("\nB");
     mv = *head_b;
     while(mv != NULL)
     {
