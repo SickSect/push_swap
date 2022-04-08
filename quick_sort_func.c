@@ -32,9 +32,11 @@ int	find_median_chunk(t_node **head_b, int chunk)
 
     mv = (*head_b);
 	counter = chunk;
-    while (--counter)
-        mv = mv->p_next;
-    shield = mv->data;
+    while (--counter != 0)
+		mv = mv->p_next;
+	if (mv->p_next == NULL)
+		return (find_median(head_b));
+	shield = mv->p_next->data;
 	mv = (*head_b);
 	return (median_chunk(head_b, chunk, shield));
 }

@@ -16,6 +16,8 @@ static int	parcer_med_b(t_node **head_a, t_node **head_b, int chunk, int med)
 		}
         if ((*head_a)->data > (*head_a)->p_next->data)
             ft_sa(head_a);
+        printer(head_a, head_b);
+        sleep(2);
 	}
 	return (counter);
 }
@@ -30,14 +32,18 @@ static void	parcer_b_to_a(t_node **head_a, t_node **head_b, int chunk)
         ft_pa(head_b, head_a);
     else if (chunk == 2)
     {
-        if ((*head_b)->data > (*head_b)->p_next->data)
+        if ((*head_b)->data < (*head_b)->p_next->data)
             ft_sb(head_b);
         ft_pa(head_b, head_a);
         ft_pa(head_b, head_a);
+        printer(head_a, head_b);
     }
 	else
     {
         med = find_median_chunk(head_b, chunk);
+        //printf("parcer b to a CHUNK IS %d median is %d\n", chunk, med);
+        //printer(head_a, head_b);
+        sleep(1);
         counter = parcer_med_b(head_a, head_b, chunk, med);
         new_chunk = counter;
         if (ft_lstlen(head_b) != new_chunk)
@@ -45,7 +51,7 @@ static void	parcer_b_to_a(t_node **head_a, t_node **head_b, int chunk)
             while (counter--)
 		        ft_rrb(head_b);
         }
-        printer(head_a, head_b);
+        //printer(head_a, head_b);
         sleep(2);
         parcer_b_to_a(head_a, head_b, new_chunk);
     }
@@ -58,11 +64,10 @@ static int	parcer_a_to_b(t_node **head_a, t_node **head_b, int med)
 
     counter = 0;
     it = find_amount(head_a);
-    printf("MED IS %d IT IS %d\n", med, it);
+    //printf("MED IS %d IT IS %d\n", med, it);
     while (it != 0)
     {
-        printf("MED IS %d IT IS %d\n", med, it);
-        printer(head_a, head_b);
+        //printf("MED IS %d IT IS %d\n", med, it);
         if ((*head_a)->data < med)
         {
             --it;
@@ -71,7 +76,8 @@ static int	parcer_a_to_b(t_node **head_a, t_node **head_b, int med)
         }
 	    else
 		    ft_ra(head_a);
-        sleep(2);
+        //printer(head_a, head_b);
+        //sleep(2);
     }
     return (counter);
 }
