@@ -3,19 +3,23 @@
 static int	parcer_med_b(t_node **head_a, t_node **head_b, int chunk, int med)
 {
 	int counter;
+    int checker;
 
+    checker = 0;
 	counter = 0;
 	while (chunk--)
 	{
 		if ((*head_b)->data > med)
+        {
+            checker++;
 			ft_pa(head_b, head_a);
+        }
 		else
 		{
 			counter++;
 			ft_rb(head_b);
 		}
-        if ((*head_a)->data > (*head_a)->p_next->data)
-            ft_sa(head_a);
+        chunk_checker(head_a, head_b, checker);
         printer(head_a, head_b);
         sleep(2);
 	}
@@ -101,7 +105,6 @@ void	quick_sort(t_node **head_a, t_node **head_b)
         quick_sort(head_a, head_b);
     printer(head_a, head_b);
     printf("I know that chunk is %d\n", chunk);
-    sleep(2);
     parcer_b_to_a(head_a, head_b, chunk);
     printer(head_a, head_b);
 }
