@@ -19,7 +19,10 @@ static int	parcer_med_b(t_node **head_a, t_node **head_b, int chunk, int med)
 			counter++;
 			ft_rb(head_b);
 		}
-        chunk_checker(head_a, head_b, checker);
+        if ((*head_a)->data > (*head_a)->p_next->data)
+            ft_sa(head_a);
+        if (checker > 1)
+            chunk_checker(head_a, head_b, checker);
         printer(head_a, head_b);
         sleep(2);
 	}
@@ -40,7 +43,7 @@ static void	parcer_b_to_a(t_node **head_a, t_node **head_b, int chunk)
             ft_sb(head_b);
         ft_pa(head_b, head_a);
         ft_pa(head_b, head_a);
-        printer(head_a, head_b);
+        //printer(head_a, head_b);
     }
 	else
     {
