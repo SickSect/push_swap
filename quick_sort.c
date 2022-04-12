@@ -21,10 +21,8 @@ static int	parcer_med_b(t_node **head_a, t_node **head_b, int chunk, int med)
 		}
         if ((*head_a)->data > (*head_a)->p_next->data)
             ft_sa(head_a);
-        if (checker > 1)
-            chunk_checker(head_a, head_b, checker);
-        printer(head_a, head_b);
-        sleep(2);
+        //printer(head_a, head_b);
+        //sleep(2);
 	}
 	return (counter);
 }
@@ -50,7 +48,7 @@ static void	parcer_b_to_a(t_node **head_a, t_node **head_b, int chunk)
         med = find_median_chunk(head_b, chunk);
         //printf("parcer b to a CHUNK IS %d median is %d\n", chunk, med);
         //printer(head_a, head_b);
-        sleep(1);
+        //sleep(1);
         counter = parcer_med_b(head_a, head_b, chunk, med);
         new_chunk = counter;
         if (ft_lstlen(head_b) != new_chunk)
@@ -59,7 +57,7 @@ static void	parcer_b_to_a(t_node **head_a, t_node **head_b, int chunk)
 		        ft_rrb(head_b);
         }
         //printer(head_a, head_b);
-        sleep(2);
+        //sleep(2);
         parcer_b_to_a(head_a, head_b, new_chunk);
     }
 }
@@ -106,8 +104,10 @@ void	quick_sort(t_node **head_a, t_node **head_b)
 	chunk = parcer_a_to_b(head_a, head_b, med);
     if (ft_lstlen(head_a) != 1)
         quick_sort(head_a, head_b);
-    printer(head_a, head_b);
-    printf("I know that chunk is %d\n", chunk);
+    //printer(head_a, head_b);
+    //printf("I know that chunk is %d\n", chunk);
     parcer_b_to_a(head_a, head_b, chunk);
-    printer(head_a, head_b);
+    if (is_sort(head_a) == -1)
+        quick_sort(head_a, head_b);
+    //printer(head_a, head_b);
 }
