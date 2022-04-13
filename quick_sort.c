@@ -1,5 +1,25 @@
 #include "push_swap.h"
 
+static void check_prepush(t_node **head_a, t_node **head_b)
+{
+    int flg;
+
+    flg = 0;
+    if ((*head_b)->data < (*head_b)->p_next->data)
+        ft_sb(head_b);
+    else if ((*head_b)->data < (*head_b)->p_next->p_next->data)
+    {
+        ft_sb(head_b);
+        ft_rb(head_b);
+        ft_sb(head_b);
+        ft_pa(head_b, head_a);
+        ft_rrb(head_b);
+        flg = 1;
+    }
+    if (flg == 0)
+        ft_pa(head_b, head_a);
+}
+
 static int	parcer_med_b(t_node **head_a, t_node **head_b, int chunk, int med)
 {
 	int counter;
@@ -9,22 +29,17 @@ static int	parcer_med_b(t_node **head_a, t_node **head_b, int chunk, int med)
 	counter = 0;
 	while (chunk--)
 	{
-        //printf("WARNING\n");
 		if ((*head_b)->data > med)
         {
+            check_prepush(head_a, head_b);
             checker++;
-			ft_pa(head_b, head_a);
         }
 		else
 		{
 			counter++;
 			ft_rb(head_b);
 		}
-        //if ((*head_a)->data > (*head_a)->p_next->data)
-        //    ft_sa(head_a);
         check_on_next(head_a, checker);
-        //printer(head_a, head_b);
-        //sleep(2);
 	}
 	return (counter);
 }
@@ -103,9 +118,9 @@ void	quick_sort(t_node **head_a, t_node **head_b)
             med = (*head_a)->p_next->data;
     }
 	chunk = parcer_a_to_b(head_a, head_b, med);
-    if (ft_lstlen(head_a) != 1)
+    if (ft_lstlen(head_a) != 3)
         quick_sort(head_a, head_b);
-    //printer(head_a, head_b);
+    half_sort(head_a, 4);
     //printf("I know that chunk is %d\n", chunk);
     parcer_b_to_a(head_a, head_b, chunk);
     if (is_sort(head_a) == -1)

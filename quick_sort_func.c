@@ -18,7 +18,7 @@ void check_on_next(t_node **head_a, int counter)
 			ft_rra(head_a);
 		}
 	}
-	else if (counter == 4)
+	else if (counter > 4)
 	{
 		if ((*head_a)->data > (*head_a)->p_next->data)
             ft_sa(head_a);
@@ -56,7 +56,7 @@ void amount_not_sorted(t_node **head_a, t_node **head_b)
 		}
 		mv = mv->p_next;
 	}
-	printf("Not sorted elements is %d\n", counter);
+	//printf("Not sorted elements is %d\n", counter);
 }
 
 static int median_chunk(t_node **head_b, int chunk, int shield)
