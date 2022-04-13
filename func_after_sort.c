@@ -1,11 +1,8 @@
 #include "push_swap.h"
 
-void chunk_checker(t_node **head_a, t_node **head_b, int chunk)
+void take_big(t_node **head_a, t_node **head_b, int chunk)
 {
-    (void)head_a;
-    (void)head_b;
-    (void)chunk;
-    
+   
 }
 
 static void rotate_after_push(t_node **head, int counter)

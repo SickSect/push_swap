@@ -9,6 +9,7 @@ static int	parcer_med_b(t_node **head_a, t_node **head_b, int chunk, int med)
 	counter = 0;
 	while (chunk--)
 	{
+        //printf("WARNING\n");
 		if ((*head_b)->data > med)
         {
             checker++;
@@ -108,6 +109,12 @@ void	quick_sort(t_node **head_a, t_node **head_b)
     //printf("I know that chunk is %d\n", chunk);
     parcer_b_to_a(head_a, head_b, chunk);
     if (is_sort(head_a) == -1)
+    {
+        //printf("NOT FIN\n");
+        //printer(head_a, head_b);
+        //sleep(2);
         quick_sort(head_a, head_b);
+        //sleep(2);
+    }
     //printer(head_a, head_b);
 }
