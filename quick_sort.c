@@ -20,8 +20,9 @@ static int	parcer_med_b(t_node **head_a, t_node **head_b, int chunk, int med)
 			counter++;
 			ft_rb(head_b);
 		}
-        if ((*head_a)->data > (*head_a)->p_next->data)
-            ft_sa(head_a);
+        //if ((*head_a)->data > (*head_a)->p_next->data)
+        //    ft_sa(head_a);
+        check_on_next(head_a, checker);
         //printer(head_a, head_b);
         //sleep(2);
 	}
@@ -40,6 +41,7 @@ static void	parcer_b_to_a(t_node **head_a, t_node **head_b, int chunk)
     {
         if ((*head_b)->data < (*head_b)->p_next->data)
             ft_sb(head_b);
+        
         ft_pa(head_b, head_a);
         ft_pa(head_b, head_a);
         //printer(head_a, head_b);
@@ -48,8 +50,6 @@ static void	parcer_b_to_a(t_node **head_a, t_node **head_b, int chunk)
     {
         med = find_median_chunk(head_b, chunk);
         //printf("parcer b to a CHUNK IS %d median is %d\n", chunk, med);
-        //printer(head_a, head_b);
-        //sleep(1);
         counter = parcer_med_b(head_a, head_b, chunk, med);
         new_chunk = counter;
         if (ft_lstlen(head_b) != new_chunk)
@@ -113,6 +113,7 @@ void	quick_sort(t_node **head_a, t_node **head_b)
         //printf("NOT FIN\n");
         //printer(head_a, head_b);
         //sleep(2);
+        //amount_not_sorted(head_a, head_b);
         quick_sort(head_a, head_b);
         //sleep(2);
     }
