@@ -101,10 +101,8 @@ static int	parcer_a_to_b(t_node **head_a, t_node **head_b, int med)
 
     counter = 0;
     it = find_amount(head_a);
-    //printf("MED IS %d IT IS %d\n", med, it);
     while (it != 0)
     {
-        //printf("MED IS %d IT IS %d\n", med, it);
         if ((*head_a)->data < med)
         {
             --it;
@@ -113,8 +111,6 @@ static int	parcer_a_to_b(t_node **head_a, t_node **head_b, int med)
         }
 	    else
 		    ft_ra(head_a);
-        //printer(head_a, head_b);
-        //sleep(2);
     }
     return (counter);
 }
