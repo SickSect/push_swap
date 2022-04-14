@@ -7,7 +7,7 @@ static void check_prepush(t_node **head_a, t_node **head_b)
     flg = 0;
     if ((*head_b)->data < (*head_b)->p_next->data)
         ft_sb(head_b);
-    else if ((*head_b)->data < (*head_b)->p_next->p_next->data)
+    if ((*head_b)->data < (*head_b)->p_next->p_next->data)
     {
         ft_sb(head_b);
         ft_rb(head_b);
@@ -56,10 +56,26 @@ static void	parcer_b_to_a(t_node **head_a, t_node **head_b, int chunk)
     {
         if ((*head_b)->data < (*head_b)->p_next->data)
             ft_sb(head_b);
-        
         ft_pa(head_b, head_a);
         ft_pa(head_b, head_a);
         //printer(head_a, head_b);
+    }
+    else if (chunk == 3)
+    {
+        if ((*head_b)->data > (*head_b)->p_next->data && (*head_b)->data > (*head_b)->p_next->p_next->data)
+            ft_pa(head_b, head_a);
+        else if ((*head_b)->p_next->data > (*head_b)->data && (*head_b)->p_next->data > (*head_b)->p_next->p_next->data)
+        {
+            ft_sb(head_b);
+            ft_pa(head_b, head_a);
+        }
+        else if ((*head_b)->p_next->p_next->data > (*head_b)->data && (*head_b)->p_next->p_next->data > (*head_b)->p_next->data)
+        {
+            ft_rb(head_b);
+            ft_sb(head_b);
+            ft_pa(head_b, head_a);
+            ft_rrb(head_b);
+        }
     }
 	else
     {
@@ -112,12 +128,17 @@ void	quick_sort(t_node **head_a, t_node **head_b)
 	    med = find_median(head_a);
     else
     {
+        if ((*head_a)->data < (*head_a)->p_next->data)
+            ft_sa(head_a);
+        /*
         if ((*head_a)->data > (*head_a)->p_next->data)
             med = (*head_a)->data;
         else
             med = (*head_a)->p_next->data;
+            */
     }
-	chunk = parcer_a_to_b(head_a, head_b, med);
+    if (ft_lstlen(head_a) > 2)
+	    chunk = parcer_a_to_b(head_a, head_b, med);
     if (ft_lstlen(head_a) != 3)
         quick_sort(head_a, head_b);
     half_sort(head_a, 4);

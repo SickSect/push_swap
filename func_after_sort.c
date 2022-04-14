@@ -1,5 +1,6 @@
 #include "push_swap.h"
 
+
 static void rotate_after_push(t_node **head, int counter)
 {
     if (counter == 1)
