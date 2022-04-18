@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static void correct_pos(t_node **head_a, int chunk)
+void check_on_next(t_node **head_a, int chunk)
 {
 	int data;
 	t_node *mv;
@@ -18,7 +18,6 @@ static void correct_pos(t_node **head_a, int chunk)
 			mv = mv->p_next;
 		}
 		tmp = counter;
-		//printf("COUNTER IS %d\n", counter);
 		if (counter == 1)
 			ft_sa(head_a);
 		else
@@ -28,53 +27,20 @@ static void correct_pos(t_node **head_a, int chunk)
 				ft_sa(head_a);
 				ft_ra(head_a);
 			}
-			while(counter--)
+			//THINKING
+			if (counter > ft_lstlen(head_a) / 2)
+			{
+				counter = ft_lstlen(head_a) - counter;
+				while (counter--)
+					ft_ra(head_a);
+			}
+			else
+			{
+				while(counter--)
 				ft_rra(head_a);
+			}
 		}
 	}
-}
-
-void check_on_next(t_node **head_a, int counter)
-{
-	(void)counter;
-	correct_pos(head_a, counter);
-	/*
-	if (counter == 2)
-	{
-		if ((*head_a)->data > (*head_a)->p_next->data)
-            ft_sa(head_a);
-	}
-	else if (counter == 3)
-	{
-		if ((*head_a)->data > (*head_a)->p_next->data)
-            ft_sa(head_a);
-		if ((*head_a)->p_next->data > (*head_a)->p_next->p_next->data)
-		{
-			ft_ra(head_a);
-			ft_sa(head_a);
-			ft_rra(head_a);
-		}
-	}
-	else if (counter >= 4)
-	{
-		if ((*head_a)->data > (*head_a)->p_next->data)
-            ft_sa(head_a);
-		if ((*head_a)->p_next->data > (*head_a)->p_next->p_next->data)
-		{
-			ft_ra(head_a);
-			ft_sa(head_a);
-			ft_rra(head_a);
-		}
-		if ((*head_a)->p_next->p_next->data >(*head_a)->p_next->p_next->p_next->data)
-		{
-			ft_ra(head_a);
-			ft_ra(head_a);
-			ft_sa(head_a);
-			ft_rra(head_a);
-			ft_rra(head_a);
-		}
-	}
-	*/
 }
 
 static int median_chunk(t_node **head_b, int chunk, int shield)

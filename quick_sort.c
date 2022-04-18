@@ -1,23 +1,36 @@
 #include "push_swap.h"
 
-void check_prepush(t_node **head_a, t_node **head_b)
+void check_prepush(t_node **head_a)
 {
-    int flg;
-   
-    flg = 0;
-    if ((*head_b)->data < (*head_b)->p_next->data)
-        ft_sb(head_b);
-    if ((*head_b)->data < (*head_b)->p_next->p_next->data)
-    {
-        ft_sb(head_b);
-        ft_rb(head_b);
-        ft_sb(head_b);
-        ft_pa(head_b, head_a);
-        ft_rrb(head_b);
-        flg = 1;
-    }
-    if (flg == 0)
-        ft_pa(head_b, head_a);
+    int data;
+	t_node *mv;
+	int	counter;
+	int tmp;
+
+	counter = 0;
+	if (is_sort(head_a) == -1)
+	{
+		data = (*head_a)->data;
+		mv = (*head_a)->p_next;
+		while (mv->data < data && mv != NULL)
+		{
+			counter++;
+			mv = mv->p_next;
+		}
+		tmp = counter;
+		if (counter == 1)
+			ft_sa(head_a);
+		else
+		{
+			while (tmp--)
+			{
+				ft_sa(head_a);
+				ft_ra(head_a);
+			}
+			while(counter--)
+				ft_rra(head_a);
+		}
+	}
 }
 
 static int	parcer_med_b(t_node **head_a, t_node **head_b, int chunk, int med)
@@ -33,8 +46,10 @@ static int	parcer_med_b(t_node **head_a, t_node **head_b, int chunk, int med)
 	{
 		if ((*head_b)->data > med)
         {
-            check_prepush(head_a, head_b);
-            //ft_pa(head_b, head_a);
+            if ((*head_b)->data < (*head_b)->p_next->data && (*head_b)->p_next->data > med)
+                ft_sb(head_b);
+            ft_pa(head_b, head_a);
+            //check_prepush(head_a);
             checker++;
         }
 		else
@@ -96,8 +111,17 @@ static void	parcer_b_to_a(t_node **head_a, t_node **head_b, int chunk)
         new_chunk = counter;
         if (ft_lstlen(head_b) != new_chunk)
         {
-            while (counter--)
-		        ft_rrb(head_b);
+           	if (counter > ft_lstlen(head_b) / 2)
+			{
+				counter = ft_lstlen(head_b) - counter;
+				while (counter--)
+					ft_rb(head_b);
+			}
+			else
+			{
+				while(counter--)
+				ft_rrb(head_b);
+			}
         }
     }
     parcer_b_to_a(head_a, head_b, new_chunk);
