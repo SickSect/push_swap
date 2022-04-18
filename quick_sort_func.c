@@ -1,7 +1,44 @@
 #include "push_swap.h"
 
+static void correct_pos(t_node **head_a, int chunk)
+{
+	int data;
+	t_node *mv;
+	int	counter;
+	int tmp;
+
+	counter = 0;
+	if (is_sort(head_a) == -1)
+	{
+		data = (*head_a)->data;
+		mv = (*head_a)->p_next;
+		while (mv->data < data && chunk--)
+		{
+			counter++;
+			mv = mv->p_next;
+		}
+		tmp = counter;
+		//printf("COUNTER IS %d\n", counter);
+		if (counter == 1)
+			ft_sa(head_a);
+		else
+		{
+			while (tmp--)
+			{
+				ft_sa(head_a);
+				ft_ra(head_a);
+			}
+			while(counter--)
+				ft_rra(head_a);
+		}
+	}
+}
+
 void check_on_next(t_node **head_a, int counter)
 {
+	(void)counter;
+	correct_pos(head_a, counter);
+	/*
 	if (counter == 2)
 	{
 		if ((*head_a)->data > (*head_a)->p_next->data)
@@ -37,6 +74,7 @@ void check_on_next(t_node **head_a, int counter)
 			ft_rra(head_a);
 		}
 	}
+	*/
 }
 
 static int median_chunk(t_node **head_b, int chunk, int shield)

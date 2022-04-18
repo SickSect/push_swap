@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static void check_prepush(t_node **head_a, t_node **head_b)
+void check_prepush(t_node **head_a, t_node **head_b)
 {
     int flg;
    
@@ -24,14 +24,17 @@ static int	parcer_med_b(t_node **head_a, t_node **head_b, int chunk, int med)
 {
 	int counter;
     int checker;
+    int ch;
 
     checker = 0;
 	counter = 0;
+    ch = chunk;
 	while (chunk--)
 	{
 		if ((*head_b)->data > med)
         {
             check_prepush(head_a, head_b);
+            //ft_pa(head_b, head_a);
             checker++;
         }
 		else
@@ -39,7 +42,12 @@ static int	parcer_med_b(t_node **head_a, t_node **head_b, int chunk, int med)
 			counter++;
 			ft_rb(head_b);
 		}
-        check_on_next(head_a, checker);
+        //printf("BEFORE\n");
+        //printer(head_a, head_b);
+        check_on_next(head_a, ch);
+        //printf("AFTER\n");
+        //printer(head_a, head_b);
+        //sleep(2);
 	}
 	return (counter);
 }
@@ -129,7 +137,6 @@ void	quick_sort(t_node **head_a, t_node **head_b)
         quick_sort(head_a, head_b);
     else
         half_sort(head_a, 4);
-    printf("CHUNK IS %d\n", chunk);
+    //printf("CHUNK IS %d\n", chunk);
     parcer_b_to_a(head_a, head_b, chunk);
-    printer(head_a, head_b);
-}
+}   
