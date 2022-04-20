@@ -62,4 +62,5 @@ int         find_amount(t_node **head);
 void		chunk_checker(t_node **head_a, t_node **head_b, int chunk);
 void		amount_not_sorted(t_node **head_a, t_node **head_b);
 void        check_on_next(t_node **head_a, int counter);
+int         invert_pushing(t_node **head_a, t_node **head_b, int chunk);
 #endif

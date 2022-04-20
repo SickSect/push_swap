@@ -106,8 +106,15 @@ static void	parcer_b_to_a(t_node **head_a, t_node **head_b, int chunk)
     }
 	else
     {
+        // need to make invert here and call it in second try? and after = main func
+        printf("CHUNK IS %d\n", chunk);
         med = find_median_chunk(head_b, chunk);
         counter = parcer_med_b(head_a, head_b, chunk, med);
+        if (counter > 3)
+        {
+            invert_pushing(head_a, head_b, counter);
+        }
+        /*
         new_chunk = counter;
         if (ft_lstlen(head_b) != new_chunk)
         {
@@ -122,9 +129,13 @@ static void	parcer_b_to_a(t_node **head_a, t_node **head_b, int chunk)
 				while(counter--)
 				ft_rrb(head_b);
 			}
+            
         }
+        */
     }
+    printf("AGAIN\n");
     parcer_b_to_a(head_a, head_b, new_chunk);
+    printf("ENDING\n");
 }
 
 static int	parcer_a_to_b(t_node **head_a, t_node **head_b, int med)
@@ -163,4 +174,6 @@ void	quick_sort(t_node **head_a, t_node **head_b)
         half_sort(head_a, 4);
     //printf("CHUNK IS %d\n", chunk);
     parcer_b_to_a(head_a, head_b, chunk);
+    printer(head_a, head_b);
+    sleep(2);
 }   

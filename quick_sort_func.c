@@ -1,5 +1,46 @@
 #include "push_swap.h"
 
+static int back_med(t_node **head_b, int chunk)
+{
+	int med;
+	int moves;
+	t_node *mv;
+
+	moves = ft_lstlen(head_b) - chunk;
+	mv = (*head_b);
+	while (mv != NULL && moves--)
+		mv = mv->p_next;
+	med = find_median(&mv);
+	//printf("BACK MED IS %d\n", med);
+	return (med);
+}
+
+int invert_pushing(t_node **head_a, t_node **head_b, int chunk)
+{
+	int med;
+	int	push;
+	t_node *last;
+	
+	//printf("CHUNK SIZE %d\n",chunk);
+	//printer(head_a, head_b);
+	push = 0;
+	med = back_med(head_b, chunk);
+	while (chunk--)
+	{
+		//printer(head_a, head_b);
+		//sleep(2);
+		last = lstlast(head_b);
+		if (last->data < med)
+		{
+			ft_rrb(head_b);
+			ft_pa(head_b, head_a);
+		}
+		else
+			ft_rrb(head_b);
+	}
+	return (push);
+}
+
 void check_on_next(t_node **head_a, int chunk)
 {
 	int data;
