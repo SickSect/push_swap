@@ -1,39 +1,6 @@
 #include "push_swap.h"
 
-void check_prepush(t_node **head_a)
-{
-    int data;
-	t_node *mv;
-	int	counter;
-	int tmp;
-
-	counter = 0;
-	if (is_sort(head_a) == -1)
-	{
-		data = (*head_a)->data;
-		mv = (*head_a)->p_next;
-		while (mv->data < data && mv != NULL)
-		{
-			counter++;
-			mv = mv->p_next;
-		}
-		tmp = counter;
-		if (counter == 1)
-			ft_sa(head_a);
-		else
-		{
-			while (tmp--)
-			{
-				ft_sa(head_a);
-				ft_ra(head_a);
-			}
-			while(counter--)
-				ft_rra(head_a);
-		}
-	}
-}
-
-static int	parcer_med_b(t_node **head_a, t_node **head_b, int chunk, int med)
+int	parcer_med_b(t_node **head_a, t_node **head_b, int chunk, int med)
 {
 	int counter;
     int checker;
@@ -49,7 +16,6 @@ static int	parcer_med_b(t_node **head_a, t_node **head_b, int chunk, int med)
             if ((*head_b)->data < (*head_b)->p_next->data && (*head_b)->p_next->data > med)
                 ft_sb(head_b);
             ft_pa(head_b, head_a);
-            //check_prepush(head_a);
             checker++;
         }
 		else
@@ -57,12 +23,7 @@ static int	parcer_med_b(t_node **head_a, t_node **head_b, int chunk, int med)
 			counter++;
 			ft_rb(head_b);
 		}
-        //printf("BEFORE\n");
-        //printer(head_a, head_b);
         check_on_next(head_a, ch);
-        //printf("AFTER\n");
-        //printer(head_a, head_b);
-        //sleep(2);
 	}
 	return (counter);
 }
@@ -73,6 +34,7 @@ static void	parcer_b_to_a(t_node **head_a, t_node **head_b, int chunk)
     int counter;
     int new_chunk;
 
+	
     if (chunk == 1)
     {
         ft_pa(head_b, head_a);
@@ -102,22 +64,18 @@ static void	parcer_b_to_a(t_node **head_a, t_node **head_b, int chunk)
             ft_pa(head_b, head_a);
             ft_rrb(head_b);
         }
-        new_chunk = 2;
+        parcer_b_to_a(head_a, head_b, 2);
     }
 	else
     {
-        // need to make invert here and call it in second try? and after = main func
-        printf("CHUNK IS %d\n", chunk);
         med = find_median_chunk(head_b, chunk);
         counter = parcer_med_b(head_a, head_b, chunk, med);
-        if (counter > 3)
-        {
-            invert_pushing(head_a, head_b, counter);
-        }
-        /*
         new_chunk = counter;
         if (ft_lstlen(head_b) != new_chunk)
         {
+			while(counter--)
+				ft_rrb(head_b);
+			/*
            	if (counter > ft_lstlen(head_b) / 2)
 			{
 				counter = ft_lstlen(head_b) - counter;
@@ -127,15 +85,12 @@ static void	parcer_b_to_a(t_node **head_a, t_node **head_b, int chunk)
 			else
 			{
 				while(counter--)
-				ft_rrb(head_b);
+					ft_rrb(head_b);
 			}
-            
+			*/
         }
-        */
-    }
-    printf("AGAIN\n");
-    parcer_b_to_a(head_a, head_b, new_chunk);
-    printf("ENDING\n");
+		parcer_b_to_a(head_a, head_b, new_chunk);
+	}
 }
 
 static int	parcer_a_to_b(t_node **head_a, t_node **head_b, int med)
@@ -172,8 +127,5 @@ void	quick_sort(t_node **head_a, t_node **head_b)
         quick_sort(head_a, head_b);
     else
         half_sort(head_a, 4);
-    //printf("CHUNK IS %d\n", chunk);
     parcer_b_to_a(head_a, head_b, chunk);
-    printer(head_a, head_b);
-    sleep(2);
 }   

@@ -34,6 +34,7 @@ int invert_pushing(t_node **head_a, t_node **head_b, int chunk)
 		{
 			ft_rrb(head_b);
 			ft_pa(head_b, head_a);
+			push++;
 		}
 		else
 			ft_rrb(head_b);
