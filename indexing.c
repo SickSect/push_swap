@@ -74,7 +74,7 @@ t_node *is_sort_index(t_node **head_a)
     lowest = lower(head_a);
     while (mv->data != lowest->data)
         mv = mv->p_next;
-    //printf("GO HERE %d\n", mv->data);
+    printf("Lowest is %d\n", lowest->data);
     //sleep(2);
     if ((*head_a)->data == lowest->data)
     {
