@@ -76,9 +76,11 @@ void zero_act(t_node **head_a, t_node **head_b)
 
 void    sort(t_node **head_a, t_node **head_b)
 {
-   while(is_sort(head_a) == -1)
-   {
-        zero_act(head_a, head_b);
-        quick_sort(head_a, head_b);
-   }
+    indexier(head_a);
+    while(is_sort(head_a) == -1)
+	{
+		quick_sort(head_a, head_b);
+		printer(head_a, head_b);
+		sleep(3);
+	}
 }
