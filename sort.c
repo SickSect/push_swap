@@ -56,22 +56,9 @@ int find_min(t_node **head)
     return (tmp);
 }
 
-void zero_act(t_node **head_a, t_node **head_b)
+static void maybe_sort(t_node **head_a)
 {
-    t_node *mv;
-
-    mv = (*head_a);
-    while(mv != NULL)
-    {
-        mv->act = 0;
-        mv = mv->p_next;
-    }
-    mv = (*head_b);
-    while(mv != NULL)
-    {
-        mv->act = 0;
-        mv = mv->p_next;
-    }
+    
 }
 
 void    sort(t_node **head_a, t_node **head_b)
@@ -80,7 +67,7 @@ void    sort(t_node **head_a, t_node **head_b)
     while(is_sort(head_a) == -1)
 	{
 		quick_sort(head_a, head_b);
-		printer(head_a, head_b);
-		sleep(3);
+		//printer(head_a, head_b);
+		//sleep(3);
 	}
 }

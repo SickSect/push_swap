@@ -26,15 +26,15 @@ int	parcer_med_b(t_node **head_a, t_node **head_b, int chunk, int med)
 			ft_rb(head_b);
 		}
         sort_me = is_sort_index(head_a);
-        if(sort_me != -1)
-            printf("SORT ME IS %d\n", sort_me);
+        //if(sort_me != -1)
+            //printf("SORT ME IS %d\n", sort_me);
         if (sort_me != 0 && sort_me != (*head_a)->p_next->data)
         {
-            printf("NEED TO SORT %d\n", sort_me);
+           // printf("NEED TO SORT %d\n", sort_me);
             sort_node(head_a);
         }
-        printer(head_a, head_b);
-        sleep(2);
+        //printer(head_a, head_b);
+        //sleep(2);
         sort_me = -1;
 	}
 	return (counter);

@@ -56,4 +56,5 @@ void        check_on_next(t_node **head_a, int counter);
 void        indexier(t_node **head_a);
 int         is_sort_index(t_node **head_a);
 void        sort_node(t_node**head_a);
+t_node      *lower(t_node **head_a)
 #endif
