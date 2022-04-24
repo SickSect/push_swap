@@ -5,112 +5,127 @@ static t_node *lower(t_node **head_a)
     t_node *mv;
     t_node *low;
 
-    mv = (*head_a);
-    low = (*head_a);
+    mv = (*head_a)->p_next;
+    low = (*head_a)->p_next;
     while (mv != NULL)
     {
         if (low->data > mv->data)
             low = mv;
         mv = mv->p_next;
     }
-    //printf("LOWEST IS %d\n", low->data);
-    //sleep(2);
     return (low);
 }
 
-void sort_node(t_node**head_a, t_node *sort_me)
+void sort_node(t_node**head_a)
 {
-    (void)head_a;
     t_node *put_before;
     t_node *mv;
-    int counter;
     t_node *lowest;
 
-    mv = (*head_a);
-    counter = 0;
     put_before = NULL;
-    while (mv->data != sort_me->data)
-    {
-        counter++;
-        mv = mv->p_next;
-    }
-    printf("I THINK WE NEED %d actions to catch it\n", counter);
     lowest = lower(head_a);
-    mv = (*head_a)->p_next;
-    while (lowest != NULL && put_before == NULL)
+    if (lowest->data == (*head_a)->p_next->data)
     {
-        if (lowest->data > sort_me->data)
-            put_before = lowest;
-        lowest = lowest->p_next;
-    }
-    if (put_before == NULL)
-    {
-        while (mv != NULL && put_before == NULL)
+        mv = (*head_a)->p_next;
+        while (mv != NULL)
         {
-            if (mv->data > sort_me->data)
+            if (mv->data > (*head_a)->data)
+            {
                 put_before = mv;
-            mv = mv->p_next;
+                printf("FIND BY COMMON WAY %d\n", put_before->data);
+                mv = NULL;
+            }
+            else
+                mv = mv->p_next;
         }
-    }
-    while (sort_me->p_next->data != put_before->data )
-    {
-        ft_sa(head_a);
-        ft_ra(head_a);
-    }
-    printf("I NEED TO PUT SORT ME BEFORE %d\n", put_before->data);
-    sleep(1);
-}
-
-
-t_node *is_sort_index(t_node **head_a)
-{
-    //printf("NEW FUNC TEST START\n");
-    t_node *mv;
-    t_node *lowest;
-    t_node *sort_me;
-
-    mv = (*head_a);
-    sort_me = NULL;
-    lowest = lower(head_a);
-    while (mv->data != lowest->data)
-        mv = mv->p_next;
-    printf("Lowest is %d\n", lowest->data);
-    //sleep(2);
-    if ((*head_a)->data == lowest->data)
-    {
-        while (mv->p_next != NULL)
-        {
-            if (mv->data > mv->p_next->data)
-                sort_me = mv;
-            mv = mv->p_next;
-        }
-        return (sort_me);
     }
     else
     {
-        while (lowest->p_next!= NULL)
+        while (lowest != NULL)
         {
-            if (lowest->data > lowest->p_next->data)
-                sort_me = lowest;
-            lowest = lowest->p_next;
+            if (lowest->data > (*head_a)->data)
+            {
+                put_before = lowest;
+                printf("FIND BY COMPLEX WAY %d\n", put_before->data);
+                lowest = NULL;
+            }
+            else
+                lowest = lowest->p_next;
         }
-        printf("MOVE LOWEST OK\n");
-        sleep(2);
-        if (sort_me != NULL)
-            return (sort_me);
-        lowest = lower(head_a);
-        mv = (*head_a);
-        while (mv->data != lowest->data && mv != NULL)
+        if (put_before == NULL)
         {
-            //printf("I AM LOOKING FOR THIS %d\n", mv->data);
-            if (mv->data > mv->p_next->data)
-                sort_me = mv;
+            mv = (*head_a)->p_next;
+            while (mv != NULL)
+            {
+                if (mv->data > (*head_a)->data)
+                {
+                    put_before = mv;
+                    printf("FIND BY COMPLEX WAY %d\n", put_before->data);
+                    mv = NULL;
+                }
+                else
+                    mv = mv->p_next;
+            }
+        }
+    }
+    printf("PUT NEW ELEMENT BEFORE %d\n", put_before->data);
+    if (put_before != NULL)
+    {
+        while ((*head_a)->p_next->data != put_before->data )
+        {
+            ft_sa(head_a);
+            ft_ra(head_a);
+        }
+    }
+}
+
+
+int is_sort_index(t_node **head_a)
+{
+    //printf("NEW FUNC TEST START\n");
+    t_node *mv;
+    int     lowest;
+
+    lowest = lower(head_a)->data; // aby but not first element
+    printf("low is %d\n", lowest);
+    sleep(1);
+    if ((*head_a)->p_next->data == lowest)
+    {
+        mv = (*head_a)->p_next;
+        while (mv != NULL)
+        {
+            if (mv->data > (*head_a)->data)
+            {
+                printf("FOUND BY COMMON TRY %d\n", mv->data);
+                return (mv->data);
+            }
             mv = mv->p_next;
         }
-        if (sort_me != NULL)
-            return (sort_me);
     }
-    return (NULL);
+    else
+    {
+        mv = lower(head_a);
+        while (mv != NULL)
+        {
+            if (mv->data > (*head_a)->data)
+            {
+                printf("FOUND BY COMPLEX TRY %d\n", mv->data);
+                return (mv->data);
+            }
+            mv = mv->p_next;
+        }
+        mv = (*head_a)->p_next;
+        while (mv != NULL && mv->data != lowest)
+        {  
+            if (mv->data > (*head_a)->data)
+            {
+                printf("FOUND BY COMPLEX TRY %d\n", mv->data);
+                return (mv->data);
+            }
+            mv = mv->p_next;
+        }
+    }
+    return (-1);
 }
 
 static void swap_data_to_act(t_node **head_a)

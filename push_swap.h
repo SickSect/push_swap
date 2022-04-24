@@ -54,6 +54,6 @@ void		chunk_checker(t_node **head_a, t_node **head_b, int chunk);
 void		amount_not_sorted(t_node **head_a, t_node **head_b);
 void        check_on_next(t_node **head_a, int counter);
 void        indexier(t_node **head_a);
-t_node      *is_sort_index(t_node **head_a);
-void        sort_node(t_node**head_a, t_node *sort_me);
+int         is_sort_index(t_node **head_a);
+void        sort_node(t_node**head_a);
 #endif

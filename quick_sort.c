@@ -4,12 +4,13 @@ int	parcer_med_b(t_node **head_a, t_node **head_b, int chunk, int med)
 {
 	int counter;
     int checker;
-    t_node *sort_me;
+    int sort_me;
     //int ch;
 
     checker = 0;
 	counter = 0;
     //ch = chunk;
+    sort_me = -1;
 	while (chunk--)
 	{
 		if ((*head_b)->data > med)
@@ -24,18 +25,17 @@ int	parcer_med_b(t_node **head_a, t_node **head_b, int chunk, int med)
 			counter++;
 			ft_rb(head_b);
 		}
+        sort_me = is_sort_index(head_a);
+        if(sort_me != -1)
+            printf("SORT ME IS %d\n", sort_me);
+        if (sort_me != 0 && sort_me != (*head_a)->p_next->data)
+        {
+            printf("NEED TO SORT %d\n", sort_me);
+            sort_node(head_a);
+        }
         printer(head_a, head_b);
         sleep(2);
-        sort_me = is_sort_index(head_a);
-        if (sort_me != NULL)
-        {
-            printf("NEED TO SORT %d\n", sort_me->data);
-            printer(head_a, head_b);
-            sort_node(head_a, sort_me);
-            printer(head_a, head_b);
-            sleep(2);
-        }
-        //check_on_next(head_a);
+        sort_me = -1;
 	}
 	return (counter);
 }
