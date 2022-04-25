@@ -4,11 +4,9 @@ int	parcer_med_b(t_node **head_a, t_node **head_b, int chunk, int med)
 {
 	int counter;
     int checker;
-    //int sort_me;
 
     checker = 0;
 	counter = 0;
-    //sort_me = -1;
 	while (chunk--)
 	{
 		if ((*head_b)->data > med)
@@ -34,7 +32,6 @@ static void	parcer_b_to_a(t_node **head_a, t_node **head_b, int chunk)
     int counter;
     int new_chunk;
 
-	
     if (chunk == 1)
     {
         ft_pa(head_b, head_a);

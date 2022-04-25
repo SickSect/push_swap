@@ -60,9 +60,5 @@ void    sort(t_node **head_a, t_node **head_b)
 {
     indexier(head_a);
     while(is_sort(head_a) == -1)
-	{
 		quick_sort(head_a, head_b);
-		//printer(head_a, head_b);
-		//sleep(3);
-	}
 }

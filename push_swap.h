@@ -52,9 +52,7 @@ int			find_median_chunk(t_node **head_b, int chunk);
 int         find_amount(t_node **head);
 void		chunk_checker(t_node **head_a, t_node **head_b, int chunk);
 void		amount_not_sorted(t_node **head_a, t_node **head_b);
-void        check_on_next(t_node **head_a, int counter);
 void        indexier(t_node **head_a);
-int         is_sort_index(t_node **head_a);
 void        sort_node(t_node**head_a, t_node **head_b);
 t_node      *lower(t_node **head_a);
 #endif
