@@ -24,38 +24,6 @@ int find_median(t_node **head)
     return (0);
 }
 
-int find_max(t_node **head)
-{
-    t_node *mv;
-    int     tmp;
-
-    mv = (*head);
-    tmp = mv->data;
-    while(mv != NULL)
-    {
-        if (tmp < mv->data)
-            tmp = mv->data;
-        mv = mv->p_next;
-    }
-    return (tmp);
-}
-
-int find_min(t_node **head)
-{
-    t_node *mv;
-    int     tmp;
-
-    mv = (*head);
-    tmp = mv->data;
-    while(mv != NULL)
-    {
-        if (tmp > mv->data)
-            tmp = mv->data;
-        mv = mv->p_next;
-    }
-    return (tmp);
-}
-
 void    sort(t_node **head_a, t_node **head_b)
 {
     indexier(head_a);

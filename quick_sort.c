@@ -26,10 +26,25 @@ int	parcer_med_b(t_node **head_a, t_node **head_b, int chunk, int med)
 	return (counter);
 }
 
-static void	parcer_b_to_a(t_node **head_a, t_node **head_b, int chunk)
+static int complex_chunk(t_node **head_a, t_node **head_b, int chunk)
 {
     int med;
     int counter;
+    int new_chunk;
+
+    med = find_median_chunk(head_b, chunk);
+    counter = parcer_med_b(head_a, head_b, chunk, med);
+    new_chunk = counter;
+    if (ft_lstlen(head_b) != new_chunk)
+    {
+		while(counter--)
+			ft_rrb(head_b);
+    }
+    return (new_chunk);
+}
+
+static void	parcer_b_to_a(t_node **head_a, t_node **head_b, int chunk)
+{
     int new_chunk;
 
     if (chunk == 1)
@@ -45,16 +60,9 @@ static void	parcer_b_to_a(t_node **head_a, t_node **head_b, int chunk)
     }
 	else
     {
-        med = find_median_chunk(head_b, chunk);
-        counter = parcer_med_b(head_a, head_b, chunk, med);
-        new_chunk = counter;
-        if (ft_lstlen(head_b) != new_chunk)
-        {
-			while(counter--)
-				ft_rrb(head_b);
-        }
-		parcer_b_to_a(head_a, head_b, new_chunk);
-	}
+        new_chunk = complex_chunk(head_a, head_b, chunk);
+        parcer_b_to_a(head_a, head_b, new_chunk);
+    }
 }
 
 static int	parcer_a_to_b(t_node **head_a, t_node **head_b, int med)

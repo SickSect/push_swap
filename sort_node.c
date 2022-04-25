@@ -61,7 +61,6 @@ static t_node *basic_check(t_node **head_a, t_node **head_b)
 
 void sort_node(t_node**head_a, t_node **head_b)
 {
-    (void)head_b;
     t_node *put_before;
     t_node *lowest;
 
