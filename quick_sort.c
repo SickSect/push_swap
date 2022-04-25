@@ -4,19 +4,18 @@ int	parcer_med_b(t_node **head_a, t_node **head_b, int chunk, int med)
 {
 	int counter;
     int checker;
-    int sort_me;
-    //int ch;
+    //int sort_me;
 
     checker = 0;
 	counter = 0;
-    //ch = chunk;
-    sort_me = -1;
+    //sort_me = -1;
 	while (chunk--)
 	{
 		if ((*head_b)->data > med)
         {
             if ((*head_b)->data < (*head_b)->p_next->data && (*head_b)->p_next->data > med)
                 ft_sb(head_b);
+            sort_node(head_a, head_b);
             ft_pa(head_b, head_a);
             checker++;
         }
@@ -25,17 +24,6 @@ int	parcer_med_b(t_node **head_a, t_node **head_b, int chunk, int med)
 			counter++;
 			ft_rb(head_b);
 		}
-        sort_me = is_sort_index(head_a);
-        //if(sort_me != -1)
-            //printf("SORT ME IS %d\n", sort_me);
-        if (sort_me != 0 && sort_me != (*head_a)->p_next->data)
-        {
-           // printf("NEED TO SORT %d\n", sort_me);
-            sort_node(head_a);
-        }
-        //printer(head_a, head_b);
-        //sleep(2);
-        sort_me = -1;
 	}
 	return (counter);
 }
@@ -50,7 +38,6 @@ static void	parcer_b_to_a(t_node **head_a, t_node **head_b, int chunk)
     if (chunk == 1)
     {
         ft_pa(head_b, head_a);
-        return ;
     }
     else if (chunk == 2)
     {
@@ -58,7 +45,6 @@ static void	parcer_b_to_a(t_node **head_a, t_node **head_b, int chunk)
             ft_sb(head_b);
         ft_pa(head_b, head_a);
         ft_pa(head_b, head_a);
-        return ;
     }
 	else
     {

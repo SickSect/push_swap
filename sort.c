@@ -56,11 +56,6 @@ int find_min(t_node **head)
     return (tmp);
 }
 
-static void maybe_sort(t_node **head_a)
-{
-    
-}
-
 void    sort(t_node **head_a, t_node **head_b)
 {
     indexier(head_a);

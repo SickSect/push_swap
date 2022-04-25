@@ -5,8 +5,8 @@ t_node *lower(t_node **head_a)
     t_node *mv;
     t_node *low;
 
-    mv = (*head_a)->p_next;
-    low = (*head_a)->p_next;
+    mv = (*head_a);
+    low = (*head_a);
     while (mv != NULL)
     {
         if (low->data > mv->data)
@@ -16,8 +16,9 @@ t_node *lower(t_node **head_a)
     return (low);
 }
 
-void sort_node(t_node**head_a)
+void sort_node(t_node**head_a, t_node **head_b)
 {
+    (void)head_b;
     t_node *put_before;
     t_node *mv;
     t_node *lowest;
@@ -25,15 +26,14 @@ void sort_node(t_node**head_a)
 
     put_before = NULL;
     lowest = lower(head_a);
-    if (lowest->data == (*head_a)->p_next->data)
+    if (lowest->data == (*head_a)->data)
     {
-        mv = (*head_a)->p_next;
+        mv = (*head_a);
         while (mv != NULL)
         {
-            if (mv->data > (*head_a)->data)
+            if (mv->data > (*head_b)->data)
             {
                 put_before = mv;
-                //printf("FIND BY COMMON WAY %d\n", put_before->data);
                 mv = NULL;
             }
             else
@@ -44,10 +44,9 @@ void sort_node(t_node**head_a)
     {
         while (lowest != NULL)
         {
-            if (lowest->data > (*head_a)->data)
+            if (lowest->data > (*head_b)->data)
             {
                 put_before = lowest;
-                //printf("FIND BY COMPLEX WAY %d\n", put_before->data);
                 lowest = NULL;
             }
             else
@@ -55,10 +54,10 @@ void sort_node(t_node**head_a)
         }
         if (put_before == NULL)
         {
-            mv = (*head_a)->p_next;
+            mv = (*head_a);
             while (mv != NULL)
             {
-                if (mv->data > (*head_a)->data)
+                if (mv->data > (*head_b)->data)
                 {
                     put_before = mv;
                     //printf("FIND BY COMPLEX WAY %d\n", put_before->data);
@@ -69,7 +68,9 @@ void sort_node(t_node**head_a)
             }
         }
     }
+    //printer(head_a, head_b);
     //printf("PUT NEW ELEMENT BEFORE %d\n", put_before->data);
+    //sleep(2);
     if (put_before != NULL)
     {
         counter = 0;
@@ -83,20 +84,16 @@ void sort_node(t_node**head_a)
         {
             counter = ft_lstlen(head_a) - counter;
             while (counter--)
-            {
                 ft_rra(head_a);
-                ft_sa(head_a);
-            }
         }
         else
         {
-            while ((*head_a)->p_next->data != put_before->data )
-            {
-                ft_sa(head_a);
+            while (counter--)
                 ft_ra(head_a);
-            }
         }
     }
+    //printer(head_a, head_b);
+    //sleep(2);
 }
 
 

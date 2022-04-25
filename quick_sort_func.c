@@ -1,48 +1,5 @@
 #include "push_swap.h"
 
-void check_on_next(t_node **head_a, int chunk)
-{
-	int data;
-	t_node *mv;
-	int	counter;
-	int tmp;
-
-	counter = 0;
-	if (is_sort(head_a) == -1)
-	{
-		//printf("START SORT A INSIDE\n");
-		data = (*head_a)->data;
-		mv = (*head_a)->p_next;
-		while (mv->data < data && chunk--)
-		{
-			counter++;
-			mv = mv->p_next;
-		}
-		tmp = counter;
-		if (counter == 1)
-			ft_sa(head_a);
-		else
-		{
-			while (tmp--)
-			{
-				ft_sa(head_a);
-				ft_ra(head_a);
-			}
-			if (counter > ft_lstlen(head_a) / 2)
-			{
-				counter = ft_lstlen(head_a) - counter;
-				while (counter--)
-					ft_ra(head_a);
-			}
-			else
-			{
-				while(counter--)
-				ft_rra(head_a);
-			}
-		}
-	}
-}
-
 static int median_chunk(t_node **head_b, int chunk, int shield)
 {
 	t_node	*mv;
