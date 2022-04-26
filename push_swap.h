@@ -51,4 +51,6 @@ int         find_amount(t_node **head);
 void        indexier(t_node **head_a);
 void        sort_node(t_node**head_a, t_node **head_b);
 t_node      *lower(t_node **head_a);
+void		maybe_scopes(char **argv, int argc, t_node **a);
+char		**ft_split(char const *s, char c);
 #endif

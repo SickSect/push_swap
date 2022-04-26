@@ -36,11 +36,8 @@ static int add_memory(char **argv, t_node **a, int argc)
     return (0);
 }
 
-int main(int argc, char **argv)
+static int preview(char **argv, int argc)
 {
-    t_node *a;
-    t_node *b;
-    b = NULL;
     if (argc == 2 || argc == 1)
         return (0);
     if (check_argv(argv, argc) == -1)
@@ -53,6 +50,17 @@ int main(int argc, char **argv)
        ft_putstr("Error\n");
         return (-1);
     }
+    return (0);
+}
+
+int main(int argc, char **argv)
+{
+    t_node *a;
+    t_node *b;
+    b = NULL;
+    
+    if (preview(argv, argc) == -1)
+        return(-1);   
     add_memory(argv, &a, argc);
     if (check_doubles(&a) == -1)
     {
