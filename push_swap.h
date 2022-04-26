@@ -53,4 +53,7 @@ void        sort_node(t_node**head_a, t_node **head_b);
 t_node      *lower(t_node **head_a);
 char		**ft_split(char const *s, char c);
 char        **make_simple_argv(char **argv);
+int         ft_strlen(char *str);
+void        base_copier(char *orig, char **main, int index);
+
 #endif

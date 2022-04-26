@@ -43,12 +43,21 @@ static void writer(char **argv, int argc, char **simple)
 	char **splitted;
 	(void)splitted;
 	int i;
-	//int j;
+	int j;
 
 	i = 1;
+	j = 0;
 	while(argv[i])
 	{
-		printf("IT IS %d\n", is_complex(argv[i]));
+		if (is_complex(argv[i]) == 0)
+		{
+			base_copier(argv[i], simple, j);
+			printf("arg %s\n", simple[j]);
+		}
+		else
+		{
+			
+		}
 		i++;
 	}
 }
