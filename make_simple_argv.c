@@ -1,71 +1,68 @@
 #include "push_swap.h"
 
-static int count_complex_argv(char **argv, int argc)
+static int count_complex_argv(char **argv)
 {
-    int new_argc;
-    int	i;
-    int	j;
+    int counter;
+	int i;
+	int j;
 
-    new_argc = argc;
-	i = 0;
-	j = 1;
-	while (argv[i])
-	{
-		while (argv[i][j])
-		{
-			if (argv[i][j] == ' ')
-				new_argc++;
-		}
-		i++;
-	}
-	return (new_argc);
-}
-
-static void complex_writer(char **argv, int argc, int it, t_node **head_a)
-{
-	char **complex;
-
-	complex = ft_split(argv[it], ' ');
-}
-
-static void write_complex_to_simple(char **argv, int argc, t_node **head_a)
-{
-	int	i;
-	int	j;
-	int flg;
-	t_node *mv;
-
-	j = 0;
+	counter = 0;
 	i = 1;
-	flg = 0;
-	mv = (*head_a);
-	while (argv[i])
+	while (argv[i] != NULL)
 	{
+		j = 0;
 		while (argv[i][j])
 		{
-			if(argv[i][j] == ' ')
-				flg = 1;
-			j++;
+			while (argv[i][j] == ' ')
+				j++;
+			if (ft_isdigit(argv[i][j]))
+				counter++;
+			while(ft_isdigit(argv[i][j]))
+				j++;
 		}
-		if (flg == 1)
-		{
-			complex_writer(argv, argc, i, head_a);
-		}
-		else
-		{
-			mv = ft_lstnew(ft_atoi(argv[i]));
-			mv = mv->p_next;
-		}
+		i++;
+	}
+	return (counter);
+}
+
+static int is_complex(char *str)
+{
+	while (*str)
+	{
+		if (*str == ' ')
+			return (1);
+		str++;
+	}
+	return (0);
+}
+
+static void writer(char **argv, int argc, char **simple)
+{
+	(void)argc;
+	(void)simple;
+	char **splitted;
+	(void)splitted;
+	int i;
+	//int j;
+
+	i = 1;
+	while(argv[i])
+	{
+		printf("IT IS %d\n", is_complex(argv[i]));
 		i++;
 	}
 }
 
-void make_simple_argv(char **argv, int argc, t_node **a)
+char **make_simple_argv(char **argv)
 {
-    // 1 45 "1 0 85 123" "1232"
-    int		new_argc;
-	int		it;
+	int new_argc;
+	char **new_argv;
+	(void)new_argv;
+	(void)new_argc;
 
-    new_argc = count_complex_argv(argv, argc);
-	write_complex_to_simple(argv, new_argc, a);
+	new_argc = count_complex_argv(argv);
+	printf("ARG IS %d\n", new_argc);
+	new_argv = malloc(sizeof(char*) * new_argc);
+	writer(argv, new_argc, new_argv);
+	return (NULL);
 }
