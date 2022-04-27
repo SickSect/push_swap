@@ -75,7 +75,7 @@ static void writer(char **argv, char **simple, int new_argc)
 				j++;
 				it_in++;
 			}
-			free(splitted);
+			clean_argv(splitted, it_in);
 		}
 		i++;
 	}
