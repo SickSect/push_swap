@@ -55,5 +55,6 @@ char		**ft_split(char const *s, char c);
 char        **make_simple_argv(char **argv);
 int         ft_strlen(char *str);
 void        base_copier(char *orig, char **main, int index);
+void        clean_argv(char **argv, int argc);
 
 #endif

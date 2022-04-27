@@ -100,4 +100,5 @@ void	quick_sort(t_node **head_a, t_node **head_b)
     else
         half_sort(head_a, ft_lstlen(head_a) + 1);
     parcer_b_to_a(head_a, head_b, chunk);
+    printer(head_a, head_b);
 }   

@@ -53,3 +53,16 @@ void indexier(t_node **head_a)
     }
     swap_data_to_act(head_a);
 }
+
+void clean_argv(char **argv, int argc)
+{
+    int it;
+
+    it = 0;
+    while(it < argc)
+    {
+        free(argv[it]);
+        it++;
+    }
+    free(argv);
+}

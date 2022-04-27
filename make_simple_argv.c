@@ -1,5 +1,21 @@
 #include "push_swap.h"
 
+void base_copier(char *orig, char **main, int index)
+{
+    int i;
+    int len;
+
+    i = 0;
+    len = ft_strlen(orig);
+    main[index] = malloc(sizeof(char) * len);
+    main[index][len] = '\0';
+    while(orig[i])
+    {
+        main[index][i] = orig[i];
+        i++;
+    }
+}
+
 static int count_complex_argv(char **argv)
 {
     int counter;
@@ -36,27 +52,30 @@ static int is_complex(char *str)
 	return (0);
 }
 
-static void writer(char **argv, int argc, char **simple)
+static void writer(char **argv, char **simple, int new_argc)
 {
-	(void)argc;
-	(void)simple;
 	char **splitted;
-	(void)splitted;
 	int i;
 	int j;
+	int it_in;
 
 	i = 1;
 	j = 0;
-	while(argv[i])
+	while(argv[i] && j < new_argc)
 	{
 		if (is_complex(argv[i]) == 0)
-		{
-			base_copier(argv[i], simple, j);
-			printf("arg %s\n", simple[j]);
-		}
+			base_copier(argv[i], simple, j++);
 		else
 		{
-			
+			splitted = ft_split(argv[i], ' ');
+			it_in = 0;
+			while (splitted[it_in])
+			{
+				base_copier(splitted[it_in], simple, j);
+				j++;
+				it_in++;
+			}
+			free(splitted);
 		}
 		i++;
 	}
@@ -66,12 +85,12 @@ char **make_simple_argv(char **argv)
 {
 	int new_argc;
 	char **new_argv;
-	(void)new_argv;
-	(void)new_argc;
 
 	new_argc = count_complex_argv(argv);
 	printf("ARG IS %d\n", new_argc);
 	new_argv = malloc(sizeof(char*) * new_argc);
-	writer(argv, new_argc, new_argv);
-	return (NULL);
+	printf("THERE IS %d\n", new_argc);
+	sleep(1);
+	writer(argv, new_argv, new_argc);
+	return (new_argv);
 }

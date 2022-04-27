@@ -22,7 +22,7 @@ int add_memory(char **argv, t_node **a, int argc)
     int     i;
     t_node *mv;
 
-    i = 1;
+    i = 0;
     *a = malloc(sizeof(t_node));
     if (!a)
         return (-1);
@@ -38,7 +38,7 @@ int add_memory(char **argv, t_node **a, int argc)
 
 static int preview(char **argv, int argc)
 {
-    if (argc == 2 || argc == 1)
+    if (argc == 1 || argc == 0)
         return (0);
     if (check_argv(argv, argc) == -1)
     {
@@ -52,28 +52,43 @@ static int preview(char **argv, int argc)
     }
     return (0);
 }
+static int count_simpler_argc(char **argv)
+{
+    int count;
+
+    count = 0;
+    while (argv[count])
+    {
+        count++;
+    }
+    return (count);
+}
 
 int main(int argc, char **argv)
 {
+    (void)argc;
     t_node *a;
     t_node *b;
+    char **simple_argv;
+    int new_argc;
     b = NULL;
     
-    make_simple_argv(argv);
-    pause();
-    if (preview(argv, argc) == -1)
+    simple_argv = make_simple_argv(argv);
+    new_argc = count_simpler_argc(simple_argv);
+    if (preview(simple_argv, new_argc) == -1)
         return(-1);   
-    add_memory(argv, &a, argc);
+    add_memory(simple_argv, &a, new_argc);
     if (check_doubles(&a) == -1)
     {
         ft_cleaner(a, b);
         ft_putstr("Error\n");
         return (-1);
     }
-    if (argc == 3 || argc == 4)
-        half_sort(&a, argc);
+    if (new_argc == 2 || new_argc == 3)
+        half_sort(&a, new_argc + 1);
     if (is_sort(&a) == -1)
         sort(&a, &b);
     ft_cleaner(a, b);
+    clean_argv(simple_argv, new_argc);
     return (0);
 }
