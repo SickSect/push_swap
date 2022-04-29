@@ -56,10 +56,10 @@ int check_argv(char **argv, int argc)
 {
     int		it;
 
-    it = 1;
-    if (argc == 1)
+    it = 0;
+    if (argc == 0)
         return (-1);
-    else if (argc > 2)
+    else if (argc > 1)
     {
         while (it < argc)
         {
@@ -67,7 +67,7 @@ int check_argv(char **argv, int argc)
                 return (-1);
             it++;
         }
-        it = 1;
+        it = 0;
         while (it < argc)
         {
             if (is_int(argv[it]) == -1)
