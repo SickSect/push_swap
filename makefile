@@ -8,7 +8,7 @@ SRC			=	main.c swap.c rotate.c lst_func.c\
 				irrotate.c pre_sort.c printer.c push.c indexing.c\
 				check_argv.c base_func.c half_sort.c pre_sort.c\
 				sort.c quick_sort.c sort_node.c make_simple_argv.c\
-				quick_sort_func.c split.c copier.c
+				quick_sort_func.c split.c
 
 OBJ			=	$(SRC:.c=.o)
 

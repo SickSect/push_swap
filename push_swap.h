@@ -54,6 +54,6 @@ t_node      *lower(t_node **head_a);
 char		**ft_split(char const *s, char c);
 char        **make_simple_argv(char **argv);
 int         ft_strlen(char *str);
-void        base_copier(char *orig, char **main, int index);
-
+int         count_complex_argv(char **argv);
+void        newargv_cleaner(char **argv);
 #endif
