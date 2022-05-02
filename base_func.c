@@ -1,9 +1,36 @@
 #include "push_swap.h"
 
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
+
+int	ft_isdigit(int ch)
+{
+	return (ch >= '0' && ch <= '9');
+}
+
+void	ft_putstr(char *str)
+{
+	int	i;
+
+    i = 0;
+	while (str[i])
+	{
+		write (1, &str[i], 1);
+		i++;
+	}
+}
+
 static long long	ft_whiler(const char *str, int neg, int i)
 {
 	long long	res;
-	int		max;
+	int			max;
 
 	max = 0;
 	res = 0;

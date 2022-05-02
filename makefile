@@ -2,13 +2,11 @@ NAME		=	push_swap
 
 CC			=	gcc
 
-FLAGS		=	-Wall -Wextra -Werror
+FLAGS		=	-Wall -Wextra -Werror -O0 -g
 
-SRC			=	main.c ft_atoi.c is_digit.c swap.c rotate.c lst_func.c\
-				irrotate.c pre_sort.c printer.c push.c move_func.c\
-				check_argv.c ft_putstr.c half_sort.c pre_sort.c\
-				sort.c main_sort.c func_after_sort.c quick_sort.c\
-				quick_sort_func.c
+SRC			=	main.c swap.c rotate.c lst_func.c irrotate.c push.c indexing.c\
+				check_argv.c base_func.c half_sort.c sort.c quick_sort.c sort_node.c make_simple_argv.c\
+				quick_sort_func.c split.c
 
 OBJ			=	$(SRC:.c=.o)
 
@@ -17,7 +15,7 @@ RM		=	rm -rf
 all:		$(NAME)
 
 $(NAME):	$(OBJ)
-			$(CC) $(FLAGS) -fsanitize=address -o $(NAME) $^ $(LIB)
+			$(CC) $(FLAGS) -o $(NAME) $^ $(LIB)
 
 %.o:	%.c
 			$(CC) $(FLAGS) -o $@ -c $<

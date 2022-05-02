@@ -1,44 +1,31 @@
 #include "push_swap.h"
 
-static void three_arg(t_node **head)
+static void	three_arg(t_node **h)
 {
-	t_node *last;
+	t_node	*l;
 
-	last = lstlast(head);
-	if (last->data < (*head)->data && last->data < (*head)->p_next->data)		
+	l = lstlast(h);
+	if (l->data < (*h)->data && l->data < (*h)->p_next->data)
 	{
-		if ((*head)->data > (*head)->p_next->data)
-			ft_sa(head);
-		ft_rra(head);
+		if ((*h)->data > (*h)->p_next->data)
+			ft_sa(h);
+		ft_rra(h);
 	}
-	else if ((*head)->p_next->data < (*head)->data && (*head)->p_next->data < last->data)
+	else if ((*h)->p_next->data < (*h)->data && (*h)->p_next->data < l->data)
 	{
-		if (last->data > (*head)->data)
-			ft_sa(head);
+		if (l->data > (*h)->data)
+			ft_sa(h);
 		else
 		{
-			ft_rra(head);
-			ft_rra(head);
+			ft_rra(h);
+			ft_rra(h);
 		}
 	}
-	else if ((*head)->data < (*head)->p_next->data && (*head)->data < last->data && (*head)->p_next->data > last->data)
+	else if ((*h)->data < (*h)->p_next->data
+		&& (*h)->data < l->data && (*h)->p_next->data > l->data)
 	{
-		ft_rra(head);
-		ft_sa(head);
-	}
-}
-
-void	sort_back(t_node **head_a, t_node **head_b, int med)
-{
-	while ((*head_b) != NULL)
-	{
-		if ((*head_b)->data > med)
-		{
-			ft_pa(head_b, head_a);
-			ft_ra(head_a);
-		}
-		else
-			ft_pa(head_b, head_a);
+		ft_rra(h);
+		ft_sa(h);
 	}
 }
 
@@ -51,5 +38,24 @@ void	half_sort(t_node **head, int argc)
 	}
 	else if (argc == 4)
 		three_arg(head);
+}
+
+int	add_memory(char **argv, t_node **a, int argc)
+{
+	int		i;
+	t_node	*mv;
 	
+	i = 1;
+	*a = malloc(sizeof(t_node));
+	if (!a)
+		return (-1);
+	(*a)->data = ft_atoi(argv[i]);
+	i += 1;
+    mv = *a;
+	while (i < argc)
+	{
+		mv->p_next = ft_lstnew(ft_atoi(argv[i++]));
+		mv = mv->p_next;
+	}
+	return (0);
 }
