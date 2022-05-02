@@ -7,8 +7,10 @@ FLAGS		=	-Wall -Wextra -Werror -O0 -g
 SRC			=	main.c swap.c rotate.c lst_func.c irrotate.c push.c indexing.c\
 				check_argv.c base_func.c half_sort.c sort.c quick_sort.c sort_node.c make_simple_argv.c\
 				quick_sort_func.c split.c
+SRC_BONUS	= 	main_bonus.c
 
 OBJ			=	$(SRC:.c=.o)
+OBJ_BONUS	=	$(SRC_BONUS:.c=.o)
 
 RM		=	rm -rf
 
