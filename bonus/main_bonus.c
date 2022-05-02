@@ -1,17 +1,4 @@
-#include "push_swap.h"
-
-void	newargv_cleaner(char **argv, int argc)
-{
-	int	i;
-
-	i = 0;
-	while (i < argc)
-	{
-		free(argv[i]);
-		i++;
-	}
-	free(argv);
-}
+#include "push_swap_bonus.h"
 
 static void	ft_cleaner(t_node *head_a)
 {
@@ -47,7 +34,7 @@ static int after_preview(char **new_argv, int new_argc, t_node *a, t_node *b)
 		ft_putstr("Error\n");
 		return (-1);
 	}
-	//HERE
+	newargv_cleaner(new_argv, new_argc);
 	ft_cleaner(a);
 	free(b);
 	return (0);
@@ -57,7 +44,7 @@ int	main(int argc, char **argv)
 {
 	t_node	*a;
 	t_node	*b;
-
+	
 	b = NULL;
 	if (preview(argv, argc) == -1)
 		return (-1);
