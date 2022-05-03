@@ -1,5 +1,27 @@
 #include "push_swap_bonus.h"
 
+int	add_memory(char **argv, t_node **a, int argc)
+{
+	int		i;
+	t_node	*mv;
+
+	i = 1;
+	*a = malloc(sizeof(t_node));
+	if (!a)
+		return (-1);
+	(*a)->data = ft_atoi(argv[i]);
+	i += 1;
+	mv = (*a);
+	while (i < argc)
+	{
+		ft_putstr(argv[i]);
+		mv->p_next = ft_lstnew(ft_atoi(argv[i++]));
+		mv = mv->p_next;
+		pause();
+	}
+	return (0);
+}
+
 static void	ft_cleaner(t_node *head_a)
 {
 	t_node	*fr;
@@ -26,7 +48,7 @@ static int	preview(char **argv, int argc)
 	return (0);
 }
 
-static int after_preview(char **new_argv, int new_argc, t_node *a, t_node *b)
+static int	after_preview(t_node *a, t_node *b)
 {
 	if (check_doubles(&a) == -1)
 	{
@@ -34,7 +56,6 @@ static int after_preview(char **new_argv, int new_argc, t_node *a, t_node *b)
 		ft_putstr("Error\n");
 		return (-1);
 	}
-	newargv_cleaner(new_argv, new_argc);
 	ft_cleaner(a);
 	free(b);
 	return (0);
@@ -44,11 +65,12 @@ int	main(int argc, char **argv)
 {
 	t_node	*a;
 	t_node	*b;
-	
+
 	b = NULL;
 	if (preview(argv, argc) == -1)
 		return (-1);
 	add_memory(argv, &a, argc);
-	after_preview(argv, argc, a, b);
+	after_preview(a, b);
+	console(&a, &b);
 	return (0);
 }

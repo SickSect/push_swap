@@ -44,7 +44,7 @@ int	add_memory(char **argv, t_node **a, int argc)
 {
 	int		i;
 	t_node	*mv;
-	
+
 	i = 1;
 	*a = malloc(sizeof(t_node));
 	if (!a)
