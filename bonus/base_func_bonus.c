@@ -68,8 +68,6 @@ long long	ft_atoi(const char *str)
 		i++;
 		neg = 1;
 	}
-	if (neg == 1)
-		ft_putstr("NEGATIVE\n");
 	else if (str[i] == '+')
 		i++;
 	res = ft_whiler(str, neg, i);
