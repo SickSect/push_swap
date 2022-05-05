@@ -10,7 +10,7 @@ static int	linker(t_node **head_a, t_node **head_b, char *command)
 		ft_ss(head_a, head_b);
 	else if (ft_strncmp(command, "ra\n", 3) == 0)
 		ft_ra(head_a);
-	else if (ft_strcmp(command, "rb\n", 3) == 0)
+	else if (ft_strncmp(command, "rb\n", 3) == 0)
 		ft_rb(head_b);
 	else if (ft_strcmp(command, "rr\n", 3) == 0)
 		ft_rr(head_a, head_b);
