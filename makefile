@@ -21,11 +21,9 @@ RM		=	rm -rf
 all:		$(NAME)
 
 $(NAME):	$(OBJ)
-			@$(RM) $(OBJ_BONUS)
 			$(CC) $(FLAGS) -o $(NAME) $^
 
 $(BONUS_NAME): $(OBJ_BONUS)
-			@$(RM) $(OBJ)
 			$(CC) $(FLAGS) -o $(BONUS_NAME) $^
 
 bonus: $(BONUS_NAME)
