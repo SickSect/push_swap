@@ -28,6 +28,8 @@ void	ft_sb(t_node **head)
 
 void	ft_ss(t_node **head_a, t_node **head_b)
 {
-	ft_sa(head_a);
-	ft_sb(head_b);
+	if ((*head_a) != NULL)
+		ft_sa(head_a);
+	if ((*head_b) != NULL)
+		ft_sb(head_b);
 }

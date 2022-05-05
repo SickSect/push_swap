@@ -50,6 +50,8 @@ void	ft_rb(t_node **head)
 
 void	ft_rr(t_node **head_a, t_node **head_b)
 {
-	ft_ra(head_a);
-	ft_rb(head_b);
+	if ((*head_a) != NULL)
+		ft_ra(head_a);
+	if ((*head_b) != NULL)
+		ft_rb(head_b);
 }

@@ -36,6 +36,8 @@ void	ft_rrb(t_node **head)
 
 void	ft_rrr(t_node **head_a, t_node **head_b)
 {
-	ft_rra(head_a);
-	ft_rrb(head_b);
+	if ((*head_a) != NULL)
+		ft_rra(head_a);
+	if ((*head_b) != NULL)
+		ft_rrb(head_b);
 }
