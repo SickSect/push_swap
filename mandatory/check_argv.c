@@ -3,10 +3,8 @@
 static int	is_digits(char *str)
 {
 	int	i;
-	//int	flg;
 
     i = 0;
-	//flg = 1;
 	while (str[i])
 	{
 		if ((str[i] >= '0' && str[i] <= '9') || str[i] == '-')
@@ -14,7 +12,7 @@ static int	is_digits(char *str)
 		else
 			return (-1);
 	}
-    return (1);
+	return (1);
 }
 
 static int	is_int(char *str)

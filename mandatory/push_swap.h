@@ -50,5 +50,4 @@ int			ft_strlen(char *str);
 int			count_complex_argv(char **argv);
 int			add_memory(char **argv, t_node **a, int argc);
 void		newargv_cleaner(char **argv, int argc);
-
 #endif
