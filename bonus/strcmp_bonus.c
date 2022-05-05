@@ -19,7 +19,7 @@ static int	ft_cmp(char a, char b)
 	return (0);
 }
 
-int	ft_strncmp(const char *str1, const char *str2, size_t n)
+int	cmp(const char *str1, const char *str2, size_t n)
 {
 	size_t	i;
 
