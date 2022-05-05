@@ -9,15 +9,13 @@ int	add_memory(char **argv, t_node **a, int argc)
 	*a = malloc(sizeof(t_node));
 	if (!a)
 		return (-1);
-	(*a)->data = ft_atoi(argv[i]);
-	i += 1;
 	mv = (*a);
+	mv->data = ft_atoi(argv[i]);
+	i++;
 	while (i < argc)
 	{
-		ft_putstr(argv[i]);
 		mv->p_next = ft_lstnew(ft_atoi(argv[i++]));
 		mv = mv->p_next;
-		pause();
 	}
 	return (0);
 }
@@ -48,7 +46,7 @@ static int	preview(char **argv, int argc)
 	return (0);
 }
 
-static int	after_preview(t_node *a, t_node *b)
+static int	after_preview(t_node *a)
 {
 	if (check_doubles(&a) == -1)
 	{
@@ -56,8 +54,6 @@ static int	after_preview(t_node *a, t_node *b)
 		ft_putstr("Error\n");
 		return (-1);
 	}
-	ft_cleaner(a);
-	free(b);
 	return (0);
 }
 
@@ -70,7 +66,13 @@ int	main(int argc, char **argv)
 	if (preview(argv, argc) == -1)
 		return (-1);
 	add_memory(argv, &a, argc);
-	after_preview(a, b);
+	if (after_preview(a) == -1)
+	{
+		ft_cleaner(a);
+		return (-1);
+	}
 	console(&a, &b);
+	ft_cleaner(a);
+	free(b);
 	return (0);
 }

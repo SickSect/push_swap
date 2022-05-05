@@ -50,4 +50,6 @@ t_node		*ft_lstnew(int content);
 int			is_sort(t_node **head);
 int			ft_isdigit(int ch);
 void		console(t_node **head_a, t_node **head_b);
+
+void	ft_putnbr_fd(int n, int fd);
 #endif

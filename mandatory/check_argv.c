@@ -58,7 +58,7 @@ int	check_argv(char **argv, int argc)
 	it = 1;
 	if (argc == 2)
 		return (-1);
-	else if (argc > 3)
+	else if (argc > 2)
 	{
 		while (it < argc)
 		{

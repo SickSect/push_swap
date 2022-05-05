@@ -13,14 +13,13 @@ static int	linker(t_node **head_a, t_node **head_b, char *command)
 void	console(t_node **head_a, t_node **head_b)
 {
 	char	*command;
+	
 	while (1)
 	{
 		command = get_next_line(0);
-		ft_putstr(command);
-		ft_putstr(" is command\n");
 		if (command == NULL)
 		{
-			if (is_sort(head_a))
+			if (!is_sort(head_a) && (*head_b) == NULL)
 				ft_putstr("OK\n");
 			else
 				ft_putstr("KO\n");
