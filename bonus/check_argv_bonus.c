@@ -4,7 +4,7 @@ void	ft_putstr(char *str)
 {
 	int	i;
 
-    i = 0;
+	i = 0;
 	while (str[i])
 	{
 		write (1, &str[i], 1);
@@ -16,14 +16,20 @@ static int	is_digits(char *str)
 {
 	int	i;
 
-    i = 0;
-	while (str[i])
+	i = 0;
+	if (str[i] == '-')
+		i++;
+	if (str[i] != '\0')
 	{
-		if ((str[i] >= '0' && str[i] <= '9') || str[i] == '-')
+		while (str[i])
+		{
+			if (str[i] < '0' || str[i] > '9')
+				return (-1);
 			i++;
-		else
-			return (-1);
+		}
 	}
+	else
+		return (-1);
 	return (1);
 }
 
@@ -31,7 +37,7 @@ static int	is_int(char *str)
 {
 	long long	num;
 
-    num = ft_atoi(str);
+	num = ft_atoi(str);
 	if (num > 2147483647 || num < -2147483648)
 		return (-1);
 	return (0);

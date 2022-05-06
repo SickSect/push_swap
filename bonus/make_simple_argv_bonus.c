@@ -1,4 +1,4 @@
-#include "push_swap_bonus.h"
+#include "push_swap.h"
 
 static void	splt_sleaner(char **splt)
 {
@@ -29,7 +29,7 @@ int	argc_counter(char **argv)
 	space = 0;
 	while (argv[i])
 	{
-		if (argv[i][0] != '\0')
+		if (argv[i][0] && ft_strlen(argv[i]) > 0)
 		{
 			splt = ft_split(argv[i], ' ');
 			while (splt[space] != NULL)
@@ -100,14 +100,12 @@ char	**make_simple_argv(char **argv)
 	it = 0;
 	argc = argc_counter(argv);
 	new_argv = malloc(sizeof(char *) * argc);
-	while (argv[i])
+	while (argv[i] && i < argc)
 	{
 		if (argv[i][0] == '\0')
 			i++;
 		if (argv[i][0] != '\0')
-		{
 			it += copier(new_argv, it, argv[i]);
-		}
 		i++;
 	}
 	return (new_argv);
