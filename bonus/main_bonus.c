@@ -34,12 +34,8 @@ static void	ft_cleaner(t_node *head_a)
 	free(head_a);
 }
 
-int	main(int argc, char **argv)
+static int	preview(char **argv, int argc)
 {
-	t_node	*a;
-	t_node	*b;
-
-	b = NULL;
 	if (argc == 2 || argc == 1)
 		return (-1);
 	if (check_argv(argv, argc) == -1)
@@ -47,14 +43,41 @@ int	main(int argc, char **argv)
 		ft_putstr("Error\n");
 		return (-1);
 	}
-	add_memory(argv, &a, argc);
+	return (0);
+}
+
+static int after_preview(char **argv, int argc, t_node *a)
+{
 	if (check_doubles(&a) == -1)
 	{
 		ft_cleaner(a);
+		newargv_cleaner(argv, argc);
 		ft_putstr("Error\n");
 		return (-1);
 	}
+	return (0);
+}
+
+int	main(int argc, char **argv)
+{
+	t_node	*a;
+	t_node	*b;
+	char	**new_argv;
+	int		new_argc;
+
+	b = NULL;
+	new_argv = make_simple_argv(argv);
+	new_argc = argc_counter(argv);
+	if (preview(new_argv, new_argc) == -1)
+	{
+		newargv_cleaner(new_argv, new_argc);
+		return (-1);
+	}
+	add_memory(argv, &a, argc);
+	if (after_preview(new_argv, new_argc, a) == -1)
+		return (-1);
 	console(&a, &b);
+	newargv_cleaner(new_argv, new_argc);
 	ft_cleaner(a);
 	free(b);
 	return (0);

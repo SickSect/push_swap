@@ -50,4 +50,8 @@ t_node		*ft_lstnew(int content);
 int			is_sort(t_node **head);
 int			ft_isdigit(int ch);
 void		console(t_node **head_a, t_node **head_b);
+char		**make_simple_argv(char **argv);
+int			argc_counter(char **argv);
+void		newargv_cleaner(char **argv, int argc);
+char		**ft_split(char const *s, char c);
 #endif

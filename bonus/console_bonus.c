@@ -1,5 +1,18 @@
 #include "push_swap_bonus.h"
 
+void	newargv_cleaner(char **argv, int argc)
+{
+	int	i;
+
+	i = 0;
+	while (i < argc)
+	{
+		free(argv[i]);
+		i++;
+	}
+	free(argv);
+}
+
 static void	cut_linker(t_node **head_a, t_node **head_b, char *command)
 {
 	if (cmp(command, "pa\n", 3) == 0
