@@ -51,7 +51,7 @@ static char	*copy(char *orig)
 
 	i = 0;
 	brace = ft_strlen(orig);
-	copy = malloc(sizeof(char) * ft_strlen(orig));
+	copy = malloc(sizeof(char) * ft_strlen(orig) + 1);
 	while (i < brace)
 	{
 		copy[i] = orig[i];
