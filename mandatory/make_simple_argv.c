@@ -1,105 +1,114 @@
 #include "push_swap.h"
 
-int	count_complex_argv(char **argv)
+static void splt_sleaner(char **splt)
 {
-	int	counter;
+	int space;
 	int	i;
-	int	j;
 
-	counter = 0;
+	space = 0;
 	i = 0;
-	while (argv[i] != NULL)
+	while (splt[space])
+		space++;
+	while (i < space)
 	{
-		j = 0;
-		while (argv[i][j])
+		free(splt[i]);
+		i++;
+	}
+	free(splt);
+}
+
+int	argc_counter(char **argv)
+{
+	int		argc;
+	int		i;
+	char	**splt;
+	int		space;
+
+	i = 0;
+	argc = 0;
+	space = 0;
+	while (argv[i])
+	{
+		if (argv[i][0] != '\0')
 		{
-			if (argv[i][j] == ' ')
-				j++;
-			if (argv[i][j] != '\0' && argv[i][j] != ' ')
-			{
-				counter++;
-				while (argv[i][j] != ' ' && argv[i][j] != '\0')
-					j++;
-			}
+			splt = ft_split(argv[i], ' ');
+			while (splt[space] != NULL)
+				space++;
+			argc += space;
+			splt_sleaner(splt);
+			space = 0;
 		}
 		i++;
 	}
-	return (counter);
+	return (argc);
 }
 
-static int	analize_argv(char *argv)
+static char	*copy(char *orig)
 {
-	int	i;
+	int		i;
+	int		brace;
+	char	*copy;
 
 	i = 0;
-	while (argv[i++])
+	brace = ft_strlen(orig);
+	copy = malloc(sizeof(char) * ft_strlen(orig));
+	while (i < brace)
 	{
-		if (argv[i] == ' ')
-			return (1);
-	}
-	return (0);
-}
-
-static void	base_copier(char *argv, char **new_argv, int it)
-{
-	int	len;
-	int	i;
-
-	len = ft_strlen(argv);
-	i = 0;
-	new_argv[it] = malloc(sizeof(char) * len + 1);
-	while (argv[i])
-	{
-		new_argv[it][i] = argv[i];
+		copy[i] = orig[i];
 		i++;
 	}
-	new_argv[it][i] = '\0';
+	copy[i] = '\0';
+	return (copy);
 }
 
-static int	complex_copier(char *argv, char **new_argv, int it)
+static int	copier(char **new_argv, int it, char *str)
 {
-	char	**splt;
-	int		amount_added;
-	int		j;
+	int		old_it;
 	int		i;
+	char	**splt;
+	int		space;
 
-	amount_added = 0;
-	j = 0;
-	splt = ft_split(argv, ' ');
-	while (splt[amount_added])
-		amount_added++;
-	while (j < amount_added)
+	splt = ft_split(str, ' ');
+	space = 0;
+	i = 0;
+	old_it = it;
+	while (splt[space])
+		space++;
+	if (space == 1)
 	{
-		new_argv[it] = malloc(sizeof(char) * ft_strlen(splt[j]) + 1);
-		i = 0;
-		while (splt[j][i++])
-			new_argv[it][i] = splt[j][i];
-		new_argv[it][i] = '\0';
-		it++;
-		j++;
+		new_argv[it] = copy(splt[0]);
+		splt_sleaner(splt);
+		return (1);
 	}
-	newargv_cleaner(splt, amount_added);
-	return (amount_added);
+	else
+	{
+		while (i < space)
+			new_argv[it++] = copy(splt[i++]);
+		splt_sleaner(splt);
+		return (it - old_it);
+	}
 }
 
 char	**make_simple_argv(char **argv)
 {
-	int		new_argc;
 	char	**new_argv;
+	int		i;
 	int		it;
+	int		argc;
 
+	i = 0;
 	it = 0;
-	new_argc = count_complex_argv(argv);
-	new_argv = malloc(sizeof(char *) * new_argc);
-	while (it < new_argc)
+	argc = argc_counter(argv);
+	new_argv = malloc(sizeof(char *) * argc);
+	while (argv[i])
 	{
-		if (analize_argv(argv[it]) == 1)
-			it += complex_copier(argv[it], new_argv, it) + 1;
-		else
+		if (argv[i][0] == '\0')
+			i++;
+		if (argv[i][0] != '\0')
 		{
-			base_copier(argv[it], new_argv, it);
-			it++;
+			it += copier(new_argv, it, argv[i]);
 		}
+		i++;
 	}
 	return (new_argv);
 }

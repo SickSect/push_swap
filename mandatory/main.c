@@ -68,7 +68,7 @@ int	main(int argc, char **argv)
 	(void)argc;
 	b = NULL;
 	new_argv = make_simple_argv(argv);
-	new_argc = count_complex_argv(argv);
+	new_argc = argc_counter(argv);
 	if (preview(new_argv, new_argc) == -1)
 	{
 		newargv_cleaner(new_argv, new_argc);

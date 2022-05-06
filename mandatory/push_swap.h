@@ -47,7 +47,7 @@ t_node		*lower(t_node **head_a);
 char		**ft_split(char const *s, char c);
 char		**make_simple_argv(char **argv);
 int			ft_strlen(char *str);
-int			count_complex_argv(char **argv);
+int			argc_counter(char **argv);
 int			add_memory(char **argv, t_node **a, int argc);
 void		newargv_cleaner(char **argv, int argc);
 #endif
