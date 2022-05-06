@@ -85,6 +85,7 @@ static int	copier(char **new_argv, int it, char *str)
 		while (i < space)
 			new_argv[it++] = copy(splt[i++]);
 		splt_sleaner(splt);
+		free(splt);
 		return (it - old_it);
 	}
 }

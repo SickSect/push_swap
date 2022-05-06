@@ -60,7 +60,7 @@ char	*ft_reader(int fd, char *line)
 	char	*reader;
 	int		size;
 
-	size = 2;
+	size = 1;
 	reader = malloc(sizeof(char) * (size + 1));
 	if (!reader)
 		return (NULL);
