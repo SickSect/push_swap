@@ -46,7 +46,7 @@ static int	preview(char **argv, int argc)
 	return (0);
 }
 
-static int after_preview(char **argv, int argc, t_node *a)
+static int	after_preview(char **argv, int argc, t_node *a)
 {
 	if (check_doubles(&a) == -1)
 	{
